@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Request Deletion App
 
-## Getting Started
+A beautiful **Next.js (App Router)** app that lets users request deletion of their data. Requests are persisted to a bundled SQLite database via `better-sqlite3`.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm i # or npm i / yarn
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> The SQLite file is created at `./data/data.sqlite` by default. Override with `SQLITE_PATH=/absolute/path.sqlite`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & run (standalone)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+pnpm start
+```
 
-## Learn More
+## Notes
+- Uses **shadcn/ui** components and Tailwind CSS (React version for Next.js).
+- API endpoint: `POST /api/request-deletion` with JSON `{ email, reason, message?, consent }`.
+- Table `deletion_requests`: `id, email, reason, message, status, created_at`.
+- Fancy glass card, radial glow backdrop, subtle animation. Fully responsive.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production considerations
+- `better-sqlite3` is a native module. On platforms where it's unsupported, use a Node host (e.g., Docker, vm) or swap to a hosted SQLite (e.g., Turso/libsql) without changing the schema.
