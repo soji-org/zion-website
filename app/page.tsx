@@ -33,7 +33,7 @@ export default function HomePage() {
               <Link href="#devotionals" className="text-sm tracking-wide hover:text-ember transition-colors">Devotionals</Link>
               <Link href="#prayer" className="text-sm tracking-wide hover:text-ember transition-colors">Prayer</Link>
               <Link href="#sermons" className="text-sm tracking-wide hover:text-ember transition-colors">Sermons</Link>
-              <a href="https://streamsofjoy.org" target="_blank" rel="noopener noreferrer" className="text-sm tracking-wide hover:text-ember transition-colors">Website</a>
+              <a href="https://streamsofjoy.org" target="_blank" rel="noopener noreferrer" className="text-sm tracking-wide hover:text-ember transition-colors">- Church Website -</a>
               <a href="https://onelink.to/sojiapp" target="_blank" rel="noopener noreferrer" className="text-sm tracking-wide px-6 py-3 bg-charcoal text-cream rounded-full hover:bg-ember transition-colors">
                 Download Free
               </a>
@@ -361,14 +361,14 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-video bg-gradient-to-br from-ember/20 to-charcoal rounded-2xl flex items-center justify-center border border-cream/10">
+              <a href="https://www.youtube.com/@PastorJerryEze/streams" target="_blank" rel="noopener noreferrer" className="block aspect-video bg-gradient-to-br from-ember/20 to-charcoal rounded-2xl flex items-center justify-center border border-cream/10 hover:border-ember/50 transition-colors group">
                 <div className="text-center">
-                  <div className="w-20 h-20 rounded-full bg-ember flex items-center justify-center mx-auto mb-4 animate-pulse">
+                  <div className="w-20 h-20 rounded-full bg-ember flex items-center justify-center mx-auto mb-4 animate-pulse group-hover:scale-110 transition-transform">
                     <i className="fa-solid fa-play text-cream text-2xl ml-1" />
                   </div>
-                  <p className="text-cream/60">NSPPD Live Stream</p>
+                  <p className="text-cream/60 group-hover:text-cream transition-colors">Watch NSPPD Live</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
