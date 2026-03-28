@@ -73,7 +73,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="font-display text-2xl text-charcoal mb-4">5. Your Rights</h2>
-              <p>Depending on your location, you may have rights to access, correct, delete, or port your data. To exercise these rights, visit our <Link href="/user/request-deletion" className="text-ember hover:underline">Data Deletion Request</Link> page or contact us at <a href="mailto:privacy@streamsofjoy.com" className="text-ember hover:underline">privacy@streamsofjoy.com</a>.</p>
+              <p>Depending on your location, you may have rights to access, correct, delete, or port your data. To exercise these rights, visit our <Link href="/user/request-deletion" className="text-ember hover:underline">Streams of Joy Account Deletion</Link> page or contact us at <a href="mailto:privacy@streamsofjoy.com" className="text-ember hover:underline">privacy@streamsofjoy.com</a>.</p>
             </section>
 
             <section>

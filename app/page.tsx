@@ -588,7 +588,7 @@ export default function HomePage() {
               <ul className="space-y-3 text-cream/40">
                 <li><Link href="/privacy" className="hover:text-ember transition-colors">Privacy</Link></li>
                 <li><Link href="/terms" className="hover:text-ember transition-colors">Terms</Link></li>
-                <li><Link href="/user/request-deletion" className="hover:text-ember transition-colors">Data Deletion</Link></li>
+                <li><Link href="/user/request-deletion" className="hover:text-ember transition-colors">Account Deletion</Link></li>
               </ul>
             </div>
             <div className="lg:col-span-2">
