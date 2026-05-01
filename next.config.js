@@ -1,12 +1,10 @@
 import createNextIntlPlugin from 'next-intl/plugin'
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
+
+initOpenNextCloudflareForDev()
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
-const config = {
-  experimental: {
-    serverComponentsExternalPackages: ['better-sqlite3']
-  },
-  output: 'standalone'
-}
+const config = {}
 
 export default withNextIntl(config)
