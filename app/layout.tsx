@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Cinzel } from 'next/font/google'
+import { IBM_Plex_Sans } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
+import { FirebaseAnalytics } from '@/components/firebase-analytics'
+import { rtlLocales, resolveLocale } from '@/lib/i18n'
 import './globals.css'
 
-const plusJakartaSans = Plus_Jakarta_Sans({ 
+const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
-  weight: ['300', '400', '500', '600', '700']
-})
-
-const cinzel = Cinzel({ 
-  subsets: ['latin'],
-  variable: '--font-serif',
-  weight: ['400', '600', '700']
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -31,26 +31,38 @@ export const metadata: Metadata = {
     images: ['/twitter-image.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/streams-of-joy-logo.svg',
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = resolveLocale(await getLocale())
+  const messages = await getMessages()
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={locale} dir={rtlLocales.includes(locale) ? 'rtl' : 'ltr'} className="scroll-smooth">
       <head>
+        <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#FAFAF9" />
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </head>
-      <body className={`${plusJakartaSans.variable} ${cinzel.variable} font-sans antialiased min-h-screen`}>
-        {children}
+      <body className={`${ibmPlexSans.variable} font-sans antialiased min-h-screen`}>
+        <NextIntlClientProvider messages={messages}>
+          <FirebaseAnalytics />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   )

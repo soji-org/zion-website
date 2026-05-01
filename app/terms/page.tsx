@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
+import { useTranslations } from 'next-intl'
 
 export const metadata: Metadata = {
   title: 'Terms of Service - Streams of Joy',
@@ -7,17 +9,27 @@ export const metadata: Metadata = {
 }
 
 export default function TermsPage() {
+  const common = useTranslations('Common')
+  const legal = useTranslations('Legal')
+  const t = useTranslations('Legal.terms')
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur-xl border-b border-charcoal/10">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <Link href="/" className="font-display text-2xl tracking-tight">
-              Streams<span className="italic text-ember">Joy</span>
+            <Link href="/" className="inline-flex min-h-[48px] items-center" aria-label={common('streamsHome')}>
+              <Image
+                src="/streams-of-joy-logo.svg"
+                alt="Streams of Joy"
+                width={48}
+                height={48}
+                className="h-12 w-12"
+              />
             </Link>
             <Link href="/" className="text-sm text-charcoal/60 hover:text-ember transition-colors flex items-center gap-2">
-              <i className="fa-solid fa-arrow-left" /> Back
+              <i className="fa-solid fa-arrow-left" /> {common('back')}
             </Link>
           </div>
         </div>
@@ -26,22 +38,22 @@ export default function TermsPage() {
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         <div className="mb-12">
-          <p className="text-sm tracking-[0.3em] uppercase text-ember mb-4">Legal</p>
-          <h1 className="font-display text-5xl lg:text-6xl tracking-tight mb-4">Terms of Service</h1>
-          <p className="text-charcoal/60">Last updated: February 6, 2025</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-ember mb-4">{legal('eyebrow')}</p>
+          <h1 className="font-display text-5xl lg:text-6xl tracking-tight mb-4">{t('title')}</h1>
+          <p className="text-charcoal/60">{legal('lastUpdated')}</p>
         </div>
 
         <div className="prose prose-lg max-w-none">
           <div className="space-y-8 text-charcoal/80 leading-relaxed">
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">1. Agreement to Terms</h2>
-              <p>By accessing or using the Streams of Joy mobile application and website, you agree to be bound by these Terms of Service. These Terms constitute a legally binding agreement between you and Consonant Technologies Ltd.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('agreementTitle')}</h2>
+              <p>{t('agreementBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">2. Description of Services</h2>
-              <p>Streams of Joy is a spiritual and prayer community platform providing:</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('servicesTitle')}</h2>
+              <p>{t('servicesBody')}</p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
                 <li>Live streaming of prayer sessions and spiritual content</li>
                 <li>Prayer tracking and streak features</li>
@@ -53,13 +65,13 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">3. Account Registration</h2>
-              <p>To access certain features, you may need to create an account. You agree to provide accurate information and are responsible for safeguarding your account credentials. You must be at least 13 years of age to use the Services.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('accountTitle')}</h2>
+              <p>{t('accountBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">4. Acceptable Use</h2>
-              <p>You agree NOT to use the Services to:</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('useTitle')}</h2>
+              <p>{t('useBody')}</p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
                 <li>Violate any applicable laws or regulations</li>
                 <li>Infringe upon the rights of others</li>
@@ -71,37 +83,37 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">5. User Content</h2>
-              <p>You retain ownership of content you submit. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use such content in connection with the Services. When sharing prayer requests or testimonies, please avoid sharing sensitive personal information.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('contentTitle')}</h2>
+              <p>{t('contentBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">6. Donations</h2>
-              <p>Donations are voluntary contributions and are final and non-refundable unless required by law. Payments are processed through secure third-party processors. Recurring donations may be cancelled at any time.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('donationsTitle')}</h2>
+              <p>{t('donationsBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">7. Intellectual Property</h2>
-              <p>The Services and their content are owned by Consonant Technologies Ltd. and protected by intellectual property laws. You are granted a limited, non-exclusive license for personal, non-commercial use.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('ipTitle')}</h2>
+              <p>{t('ipBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">8. Disclaimers</h2>
-              <p>THE SERVICES ARE PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. Spiritual content is for inspirational purposes only and not intended to replace professional advice.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('disclaimersTitle')}</h2>
+              <p>{t('disclaimersBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">9. Limitation of Liability</h2>
-              <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Services.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('liabilityTitle')}</h2>
+              <p>{t('liabilityBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">10. Termination</h2>
-              <p>We reserve the right to suspend or terminate your access at any time. You may terminate your account by contacting us or using the account deletion feature.</p>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('terminationTitle')}</h2>
+              <p>{t('terminationBody')}</p>
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-charcoal mb-4">11. Contact Us</h2>
+              <h2 className="font-display text-2xl text-charcoal mb-4">{t('contactTitle')}</h2>
               <div className="p-6 bg-charcoal/5 rounded-2xl mt-4">
                 <p className="font-semibold text-charcoal">Consonant Technologies Ltd.</p>
                 <p className="mt-2">Email: <a href="mailto:legal@streamsofjoy.com" className="text-ember">legal@streamsofjoy.com</a></p>
@@ -112,8 +124,8 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-charcoal/10 flex justify-between text-sm text-charcoal/60">
-          <Link href="/privacy" className="hover:text-ember transition-colors">Read Privacy Policy</Link>
-          <Link href="/" className="hover:text-ember transition-colors">Return Home</Link>
+          <Link href="/privacy" className="hover:text-ember transition-colors">{t('readPrivacy')}</Link>
+          <Link href="/" className="hover:text-ember transition-colors">{common('returnHome')}</Link>
         </div>
       </main>
 

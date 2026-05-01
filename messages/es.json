@@ -1,0 +1,414 @@
+{
+  "Common": {
+    "language": "Idioma",
+    "streamsHome": "Inicio de Streams of Joy",
+    "mainNavigation": "Navegación principal",
+    "downloadFree": "Descargar gratis",
+    "back": "Atrás",
+    "backToStreams": "Volver a Streams of Joy",
+    "returnHome": "Volver al inicio"
+  },
+  "Home": {
+    "nav": {
+      "features": "Funciones",
+      "devotionals": "Devocionales",
+      "prayer": "Oración",
+      "sermons": "Sermones",
+      "study": "Estudio",
+      "churchWebsite": "Sitio de la iglesia"
+    },
+    "hero": {
+      "eyebrow": "Tu compañero espiritual completo",
+      "titlePrefix": "Lo que Dios",
+      "titleAccent": "no puede",
+      "titleSuffix": "hacer no existe.",
+      "body": "Devocionales diarios, oraciones en vivo, biblioteca de sermones, herramientas de estudio bíblico y más, todo en una hermosa app.",
+      "live": "NSPPD en vivo cada día a las 7:00 WAT"
+    },
+    "quick": {
+      "daily": {"title": "Devocionales diarios", "desc": "Con audio y traducciones"},
+      "streaks": {"title": "Rachas de oración", "desc": "Sigue tu constancia"},
+      "sermons": {"title": "Biblioteca de sermones", "desc": "Escucha sin conexión"},
+      "bible": {"title": "Estudio bíblico", "desc": "Múltiples versiones"}
+    },
+    "ticker": {
+      "users": "2M+ usuarios",
+      "countries": "150+ países",
+      "prayers": "500K oraciones diarias",
+      "rating": "4,9 calificación de la app",
+      "languages": "Disponible en 7 idiomas",
+      "sermons": "10,000+ sermones"
+    },
+    "features": {
+      "eyebrow": "Todo lo que necesitas",
+      "titlePrefix": "Una app,",
+      "titleAccent": "Crecimiento sin límites",
+      "body": "Hemos combinado todas las herramientas que necesitas para tu viaje espiritual en una experiencia hermosamente diseñada. Sin distracciones, solo crecimiento."
+    },
+    "core": {
+      "daily": {"title": "Devocionales diarios", "desc": "Contenido fresco cada día con lecturas en audio, escrituras, versículos para memorizar y soporte multilingüe."},
+      "streaks": {"title": "Rachas de oración", "desc": "Establece metas diarias, sigue tu constancia con anillos de progreso visuales y nunca rompas tu cadena de fuego."},
+      "sermons": {"title": "Biblioteca de sermones", "desc": "Explora por serie o lista de reproducción con control de velocidad, visualización de forma de onda y descargas sin conexión."},
+      "bible": {"title": "Estudio bíblico", "desc": "Múltiples versiones de la Biblia, búsqueda de versículos, lecturas de escrituras integradas y búsqueda global entre recursos."},
+      "prayer": {"title": "Gestión de oración", "desc": "Crea listas de oración, establece temporizadores, activa el modo de concentración con sonidos ambientales y protege las oraciones privadas con biometría."},
+      "study": {"title": "Centro de autoestudio", "desc": "Tus notas, marcadores y destacados todos en un lugar, vinculados a devocionales y sermones."},
+      "notifications": {"title": "Notificaciones inteligentes", "desc": "Nunca pierdas un devocional o tiempo de oración con notificaciones push personalizables y soporte de horas silenciosas."},
+      "events": {"title": "Eventos de la iglesia", "desc": "Explora eventos próximos, regístrate para asistir o ser voluntario y recibe recordatorios de lo que importa."},
+      "language": {"title": "Multiidioma", "desc": "Experiencia completa de la app en inglés, italiano, español, alemán, árabe, ruso y francés. Cambia de idioma en cualquier momento."}
+    },
+    "devotionals": {
+      "eyebrow": "Devocionales diarios",
+      "titlePrefix": "Empieza cada día",
+      "titleAccent": "Con propósito",
+      "body": "Contenido devocional fresco entregado diariamente con hermosas imágenes de portada, lecturas en audio, pasajes de las escrituras y versículos para memorizar.",
+      "tools": {
+        "audio": "Reproductor de audio para escuchar sin manos",
+        "languages": "Disponible en 7 idiomas",
+        "calendar": "Navegación de calendario mensual",
+        "highlight": "Resalta pasajes con selector de color",
+        "quoteCards": "Crea tarjetas de citas para compartir",
+        "bookmark": "Añade marcadores y toma notas"
+      }
+    },
+    "mock": {
+      "devotionalTitle": "Caminando en fe",
+      "readTime": "8 min de lectura",
+      "audio": "Audio",
+      "memoryVerse": "Versículo para memorizar",
+      "sermonTitle": "El poder de la fe"
+    },
+    "prayer": {
+      "eyebrow": "Oración y metas",
+      "titlePrefix": "Construye tu",
+      "titleAccent": "Vida de oración",
+      "managementTitle": "Gestión de oración",
+      "managementBody": "Crea y organiza listas de oración con herramientas potentes diseñadas para profundizar tu práctica de oración.",
+      "streaksTitle": "Rachas diarias",
+      "streaksBody": "Establece metas devocionales diarias y sigue tu constancia con hermosas visualizaciones.",
+      "progress": "Progreso de hoy",
+      "tools": {
+        "private": "Oraciones privadas con Face ID",
+        "timer": "Temporizador de oración con cuenta atrás",
+        "focus": "Integración del modo de concentración",
+        "sounds": "Sonidos ambientales de fondo",
+        "community": "Oraciones comunitarias sugeridas",
+        "reorder": "Arrastra para reordenar"
+      }
+    },
+    "live": {
+      "eyebrow": "Oraciones de fuego NSPPD",
+      "titlePrefix": "Únete a millones",
+      "titleAccent": "En vivo cada día",
+      "body": "La sesión nacional de oración con el Pastor Jerry Eze. Únete a creyentes de todo el mundo cada mañana de la semana para una oración poderosa.",
+      "stats": {
+        "wat": "WAT diario",
+        "liveValue": "En vivo",
+        "status": "Detección de estado",
+        "replayValue": "Repetición",
+        "replay": "Disponible después",
+        "timezoneValue": "Zona horaria",
+        "timezone": "Ajustado automáticamente"
+      }
+    },
+    "sermons": {
+      "eyebrow": "Biblioteca de sermones",
+      "titlePrefix": "Miles de",
+      "titleAccent": "Mensajes",
+      "body": "Explora sermones por serie o lista de reproducción. Nuestro potente reproductor de audio te mantiene enganchado con visualización de forma de onda y reproducción en segundo plano.",
+      "pausePreview": "Pausar vista previa del sermón",
+      "tools": {
+        "player": "Reproductor de audio completo con buscar y saltar",
+        "speed": "Velocidad de reproducción variable",
+        "waveform": "Visualización de forma de onda de audio",
+        "download": "Descargar para escuchar sin conexión",
+        "share": "Comparte clips de sermones con amigos",
+        "notes": "Vincula notas a sermones específicos"
+      }
+    },
+    "study": {
+      "eyebrow": "Centro de autoestudio",
+      "titlePrefix": "Todo tu estudio",
+      "titleAccent": "En un solo lugar",
+      "notes": {"title": "Notas", "desc": "Notas de texto enriquecido vinculadas a devocionales y sermones. Busca, filtra y organiza tus pensamientos."},
+      "bookmarks": {"title": "Marcadores", "desc": "Guarda tus devocionales y sermones favoritos para acceso rápido en cualquier momento."},
+      "highlights": {"title": "Destacados", "desc": "Pasajes resaltados con código de color de tus lecturas, todos en una vista de búsqueda."}
+    },
+    "more": {
+      "eyebrow": "Y mucho más",
+      "title": "Construido para tu viaje",
+      "events": {"title": "Eventos de la iglesia", "desc": "Regístrate y sé voluntario"},
+      "giving": {"title": "Donaciones", "desc": "Suscripciones y de una vez"},
+      "declarations": {"title": "Declaraciones", "desc": "Declaraciones anuales de la iglesia"},
+      "notifications": {"title": "Notificaciones", "desc": "Alertas push inteligentes"},
+      "darkMode": {"title": "Modo oscuro", "desc": "Cuidado con los ojos"},
+      "text": {"title": "Configuración de texto", "desc": "Tamaño de fuente ajustable"},
+      "timezones": {"title": "Zonas horarias", "desc": "Tiempos ajustados automáticamente"},
+      "privacy": {"title": "Privacidad", "desc": "Protección biométrica"}
+    },
+    "stats": {
+      "users": "Usuarios activos",
+      "countries": "Países",
+      "prayers": "Oraciones diarias",
+      "rating": "Calificación de la app"
+    },
+    "download": {
+      "eyebrow": "Comienza",
+      "titlePrefix": "Descarga",
+      "titleAccent": "Gratis hoy",
+      "body": "Comienza tu viaje espiritual con Streams of Joy. Disponible en iOS y Android.",
+      "appStore": "Descargar en App Store",
+      "googlePlay": "Disponible en Google Play"
+    },
+    "footer": {
+      "body": "Tu compañero espiritual completo. Devocionales diarios, oración en vivo, sermones y más.",
+      "features": "Funciones",
+      "allFeatures": "Todas las funciones",
+      "company": "Empresa",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "accountDeletion": "Eliminación de cuenta",
+      "support": "Soporte",
+      "contact": "Contacto"
+    }
+  },
+  "Payment": {
+    "cancelledTitle": "Pago cancelado",
+    "cancelledBody": "No se completó ningún pedido de regalo. Puedes volver a la app e iniciar una nueva sesión de regalo cuando quieras.",
+    "confirming": "Confirmando pago…",
+    "confirmingBody": "Esto puede tardar unos segundos.",
+    "checkFailed": "Falló la verificación de pago",
+    "codesReady": "Los códigos de regalo están listos.",
+    "emailsSent": "Correos de regalo enviados.",
+    "batchBody": "Comparte el enlace de abajo con tus destinatarios. Cada persona inicia sesión, reclama un asiento y luego introduce su código en la app móvil.",
+    "targetedBody": "Cada destinatario recibirá un correo con un enlace de reclamo. Inicia sesión en la web, obtiene su código y luego lo introduce en la app Streams of Joy.",
+    "shareLink": "Comparte este enlace con los destinatarios",
+    "copyBatchLink": "Copiar enlace de lote",
+    "missingReference": "Falta la referencia de pago del retorno del checkout.",
+    "verifyFailed": "No se pudo verificar el pago."
+  },
+  "Legal": {
+    "eyebrow": "Legal",
+    "lastUpdated": "Última actualización: 6 de febrero de 2025",
+    "privacy": {
+      "title": "Política de privacidad",
+      "description": "Política de privacidad para la aplicación móvil y sitio web de Streams of Joy.",
+      "introTitle": "1. Introducción",
+      "introBody": "Bienvenido a Streams of Joy. Estamos comprometidos a proteger tu información personal y tu derecho a la privacidad. Esta Política de privacidad explica cómo recopilamos, usamos, divulgamos y protegemos tu información cuando usas nuestra aplicación móvil y sitio web.",
+      "collectTitle": "2. Información que recopilamos",
+      "personalTitle": "Información personal que proporcionas",
+      "personalBody": "Recopilamos información personal que proporcionas voluntariamente cuando te registras en una cuenta, participas en actividades o nos contactas directamente. Esto puede incluir:",
+      "autoTitle": "Información recopilada automáticamente",
+      "autoBody": "Cuando accedes a nuestros Servicios, recopilamos automáticamente información del dispositivo, datos de uso y ubicación general basada en la dirección IP.",
+      "useTitle": "3. Cómo usamos tu información",
+      "sharingTitle": "4. Compartir tu información",
+      "sharingBody": "Podemos compartir información con proveedores de servicios, para obligaciones legales, durante transferencias comerciales o con tu consentimiento. No vendemos tu información personal.",
+      "rightsTitle": "5. Tus derechos",
+      "rightsBody": "Dependiendo de tu ubicación, puedes tener derechos para acceder, corregir, eliminar o transferir tus datos. Para ejercer estos derechos, visita nuestra página de Eliminación de cuenta de Streams of Joy o contáctanos en privacy@streamsofjoy.com.",
+      "securityTitle": "6. Seguridad de datos",
+      "securityBody": "Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger tu información personal. Sin embargo, ningún método de transmisión por Internet es 100% seguro.",
+      "contactTitle": "7. Contáctanos",
+      "readTerms": "Leer Términos de servicio"
+    },
+    "terms": {
+      "title": "Términos de servicio",
+      "description": "Términos de servicio para la aplicación móvil y sitio web de Streams of Joy.",
+      "agreementTitle": "1. Aceptación de los términos",
+      "agreementBody": "Al acceder o usar la aplicación móvil y sitio web de Streams of Joy, aceptas estar sujeto a estos Términos de servicio. Estos Términos constituyen un acuerdo legalmente vinculante entre tú y Consonant Technologies Ltd.",
+      "servicesTitle": "2. Descripción de los servicios",
+      "servicesBody": "Streams of Joy es una plataforma espiritual y de comunidad de oración que proporciona:",
+      "accountTitle": "3. Registro de cuenta",
+      "accountBody": "Para acceder a ciertas funciones, es posible que necesites crear una cuenta. Aceptas proporcionar información precisa y eres responsable de proteger las credenciales de tu cuenta. Debes tener al menos 13 años para usar los Servicios.",
+      "useTitle": "4. Uso aceptable",
+      "useBody": "Aceptas NO usar los Servicios para:",
+      "contentTitle": "5. Contenido del usuario",
+      "contentBody": "Conservas la propiedad del contenido que envías. Al enviar contenido, nos otorgas una licencia mundial, no exclusiva y libre de regalías para usar dicho contenido en relación con los Servicios. Al compartir solicitudes de oración o testimonios, evita compartir información personal sensible.",
+      "donationsTitle": "6. Donaciones",
+      "donationsBody": "Las donaciones son contribuciones voluntarias y son definitivas y no reembolsables a menos que lo exija la ley. Los pagos se procesan a través de procesadores de terceros seguros. Las donaciones recurrentes se pueden cancelar en cualquier momento.",
+      "ipTitle": "7. Propiedad intelectual",
+      "ipBody": "Los Servicios y su contenido son propiedad de Consonant Technologies Ltd. y están protegidos por leyes de propiedad intelectual. Se te otorga una licencia limitada y no exclusiva para uso personal y no comercial.",
+      "disclaimersTitle": "8. Exenciones de responsabilidad",
+      "disclaimersBody": "LOS SERVICIOS SE PROPORCIONAN \"TAL COMO ESTÁN\" SIN GARANTÍAS DE NINGÚN TIPO. El contenido espiritual es solo para fines inspiracionales y no está destinado a reemplazar el consejo profesional.",
+      "liabilityTitle": "9. Limitación de responsabilidad",
+      "liabilityBody": "En la medida máxima permitida por la ley, no seremos responsables de daños indirectos, incidentales o consecuentes que surjan de tu uso de los Servicios.",
+      "terminationTitle": "10. Terminación",
+      "terminationBody": "Nos reservamos el derecho de suspender o terminar tu acceso en cualquier momento. Puedes terminar tu cuenta contactándonos o usando la función de eliminación de cuenta.",
+      "contactTitle": "11. Contáctanos",
+      "readPrivacy": "Leer Política de privacidad"
+    }
+  },
+  "Deletion": {
+    "eyebrow": "Página oficial de eliminación de cuenta",
+    "title": "Eliminar tu cuenta NSPPD",
+    "intro": "Esta página es el formulario oficial de solicitud de eliminación de cuenta y datos personales para la app móvil NSPPD, operada por Consonant Technologies Ltd.",
+    "googlePlay": "Si instalaste NSPPD desde Google Play, usa este formulario para solicitar la eliminación de tu cuenta de la app y los datos personales asociados.",
+    "formTitle": "Enviar solicitud de eliminación",
+    "formDescription": "Proporciona la dirección de correo electrónico vinculada a tu cuenta NSPPD para que nuestro equipo pueda verificar y procesar la solicitud de eliminación.",
+    "email": "Dirección de correo electrónico",
+    "validEmail": "Se requiere un correo válido",
+    "reason": "Motivo",
+    "selectReason": "Selecciona un motivo",
+    "reasonRequired": "Selecciona un motivo",
+    "reasons": {
+      "noLongerNeeded": "Ya no necesito el servicio",
+      "privacyConcern": "Preocupación de privacidad",
+      "duplicateAccount": "Cuenta duplicada",
+      "other": "Otro"
+    },
+    "message": "Detalles adicionales (opcional)",
+    "messagePlaceholder": "¿Algo que debamos saber?",
+    "consent": "Confirmo que soy el propietario de la cuenta NSPPD asociada a esta dirección de correo y solicito la eliminación de mi cuenta y datos personales.",
+    "consentRequired": "Se requiere consentimiento",
+    "submit": "Enviar solicitud",
+    "submitting": "Enviando…",
+    "responseTime": "Responderemos dentro de 30 días según nuestra política.",
+    "received": "Solicitud recibida",
+    "submitted": "Solicitud enviada.",
+    "failed": "Error al enviar",
+    "failedShort": "Error",
+    "failedSubmit": "Error al enviar",
+    "retention": "Las eliminaciones solicitadas cubren el perfil de tu cuenta NSPPD y los datos personales asociados, excepto los registros que debemos conservar por razones legales, de seguridad, prevención de fraude o cumplimiento normativo."
+  },
+  "GiftStart": {
+    "loading": "Preparando el checkout de regalo…",
+    "unavailable": "Checkout de regalo no disponible",
+    "continue": "Continuar",
+    "optional": "(opcional)",
+    "progress": "Progreso del checkout",
+    "purchasingAs": "Comprando como",
+    "you": "Tú",
+    "steps": {
+      "plan": "Elegir plan",
+      "details": "Detalles del regalo",
+      "review": "Revisar y pagar"
+    },
+    "errors": {
+      "start": "No se pudo iniciar el checkout de regalo.",
+      "sendCode": "No se pudo enviar el código de verificación.",
+      "verifyCode": "No se pudo verificar este código.",
+      "calculate": "No se pudo calcular el precio. Revisa tus datos e intenta de nuevo.",
+      "noRedirect": "El checkout se creó, pero no se devolvió ninguna URL de redirección.",
+      "checkout": "No se pudo crear el checkout."
+    },
+    "anonymous": {
+      "eyebrow": "Regalo desde el sitio web",
+      "title": "Iniciar una compra de regalo",
+      "body": "Introduce tus datos para que podamos verificar tu correo antes de mostrar los planes de regalo para tu ubicación.",
+      "name": "Nombre",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "verificationFailed": "Verificación fallida",
+      "sending": "Enviando código…",
+      "send": "Enviar código",
+      "otp": "Código de verificación",
+      "sentTo": "Enviamos un código a {email}.",
+      "pricingCountry": "País de precios: {country}",
+      "codeNotAccepted": "Código no aceptado",
+      "verifying": "Verificando…"
+    },
+    "plan": {
+      "title": "Elegir un plan",
+      "body": "Selecciona cuánto tiempo quieres regalar el acceso.",
+      "save": "Ahorra {percent}%",
+      "perGift": "/ regalo"
+    },
+    "details": {
+      "title": "¿A quién le estás regalando?",
+      "body": "Elige cómo llega el regalo a los destinatarios.",
+      "targetedTitle": "Enviar a personas específicas",
+      "targetedBody": "Introduce sus direcciones de correo. Cada persona recibe un enlace de reclamo personal.",
+      "batchTitle": "Crear códigos de regalo",
+      "batchBody": "Obtén un enlace compartible con múltiples códigos, ideal para eventos o grupos.",
+      "recipients": "Direcciones de correo de los destinatarios",
+      "recipientHelp": "Una por línea o separadas por comas.",
+      "recipientCount": "{count, plural, one {# destinatario} other {# destinatarios}}",
+      "quantity": "Número de códigos",
+      "estimated": "≈ {amount} estimado",
+      "prefix": "Prefijo del código",
+      "prefixHelp": "Los códigos comenzarán con esto.",
+      "note": "Nota del regalo",
+      "calculateFailed": "No se pudo calcular el precio",
+      "calculating": "Calculando…",
+      "reviewOrder": "Revisar pedido"
+    },
+    "review": {
+      "title": "Revisar tu pedido",
+      "body": "Confirma que todo esté correcto antes del pago.",
+      "plan": "Plan",
+      "perGiftAmount": "{amount} por regalo",
+      "delivery": "Entrega",
+      "targetedDelivery": "Correo a personas específicas",
+      "batchDelivery": "Códigos de regalo compartidos",
+      "codeCount": "{count, plural, one {# código} other {# códigos}}{prefix}",
+      "prefix": "prefijo: {prefix}",
+      "note": "Nota",
+      "total": "Total",
+      "security": "El pago se procesa de forma segura. Después del pago, los destinatarios recibirán enlaces de reclamo. Inician sesión en la web, obtienen un código y lo canjean en la app Streams of Joy.",
+      "checkoutFailed": "Checkout fallido",
+      "redirecting": "Redirigiendo…",
+      "pay": "Pagar ahora"
+    }
+  },
+  "GiftClaim": {
+    "purchaserCredit": "{name} tiene un regalo para ti.",
+    "progress": "Progreso del reclamo",
+    "loading": "Cargando detalles del regalo…",
+    "giftAccess": "Acceso de regalo",
+    "batchGift": "Regalo grupal",
+    "yourGift": "Tu regalo",
+    "subscriptionAccess": "Acceso a suscripción",
+    "sharedGift": "Regalo compartido",
+    "personalGift": "Regalo personal",
+    "available": "disponible",
+    "totalSeats": "asientos totales",
+    "exhausted": "Todos los asientos han sido reclamados para este lote.",
+    "steps": {
+      "signIn": "Iniciar sesión",
+      "claim": "Reclamar",
+      "openApp": "Abrir app"
+    },
+    "errors": {
+      "load": "No se pudo cargar este regalo.",
+      "initAuth": "No se pudo inicializar el inicio de sesión.",
+      "noCode": "Regalo reclamado, pero no se devolvió ningún código.",
+      "claim": "No se pudo reclamar este regalo.",
+      "invalidCredential": "El correo o contraseña es incorrecto.",
+      "emailInUse": "Ya existe una cuenta para este correo. Inicia sesión en su lugar.",
+      "popupClosed": "El inicio de sesión fue cancelado.",
+      "firebaseDisabled": "El inicio de sesión de Firebase no está habilitado para este proyecto.",
+      "signIn": "No se pudo iniciar sesión."
+    },
+    "signin": {
+      "title": "Iniciar sesión para reclamar",
+      "targetedBody": "Usa la misma dirección de correo a la que se envió este regalo.",
+      "batchBody": "Inicia sesión o crea una cuenta para reclamar un asiento.",
+      "afterClaim": "Después de reclamar, recibirás un código para introducir en la app Streams of Joy.",
+      "notConfigured": "Inicio de sesión no configurado",
+      "firebaseMissing": "Faltan variables de entorno de Firebase. Contacta al soporte.",
+      "checking": "Comprobando estado de sesión…",
+      "google": "Continuar con Google",
+      "apple": "Continuar con Apple",
+      "emailDisclaimer": "El correo que uses se vinculará a este código de regalo. Usa el mismo correo en la app para acceder a tu suscripción.",
+      "failed": "Error al iniciar sesión"
+    },
+    "claim": {
+      "signedInAs": "Sesión iniciada como",
+      "defaultUser": "Usuario de Streams of Joy",
+      "switchAccount": "Cambiar cuenta",
+      "title": "Reclamar tu regalo",
+      "bodyPrefix": "Reclamar genera un código. Introduce ese código en la",
+      "appName": "app móvil Streams of Joy",
+      "bodySuffix": "para activar tu suscripción.",
+      "unavailable": "Reclamo no disponible",
+      "noSeats": "No quedan asientos",
+      "getCode": "Obtener mi código de regalo"
+    },
+    "success": {
+      "title": "¡Regalo reclamado!",
+      "bodyPrefix": "Copia este código e introdúcelo en la app Streams of Joy en",
+      "menuPath": "Cuenta → Canjear código de regalo",
+      "codeLabel": "Tu código de regalo",
+      "copyCode": "Copiar código de regalo",
+      "openApp": "Abrir app Streams of Joy"
+    }
+  }
+}

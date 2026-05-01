@@ -1,0 +1,430 @@
+{
+  "Common": {
+    "language": "Language",
+    "streamsHome": "Streams of Joy home",
+    "mainNavigation": "Main navigation",
+    "downloadFree": "Download Free",
+    "back": "Back",
+    "backToStreams": "Back to Streams of Joy",
+    "returnHome": "Return Home"
+  },
+  "Home": {
+    "nav": {
+      "features": "Features",
+      "devotionals": "Devotionals",
+      "prayer": "Prayer",
+      "sermons": "Sermons",
+      "study": "Study",
+      "gift": "Gift a Devotional",
+      "churchWebsite": "Church Website"
+    },
+    "hero": {
+      "eyebrow": "Your Complete Spiritual Companion",
+      "titlePrefix": "What God",
+      "titleAccent": "Cannot",
+      "titleSuffix": "Do Does Not Exist.",
+      "body": "Daily devotionals, live prayer sessions, sermon library, Bible study tools, and more, all in one beautiful app.",
+      "live": "NSPPD Live Daily at 7AM WAT"
+    },
+    "quick": {
+      "daily": {"title": "Daily Devotionals", "desc": "With audio & translations"},
+      "streaks": {"title": "Prayer Streaks", "desc": "Track your consistency"},
+      "sermons": {"title": "Sermon Library", "desc": "Offline listening"},
+      "bible": {"title": "Bible Study", "desc": "Multiple versions"}
+    },
+    "ticker": {
+      "users": "2M+ Users",
+      "countries": "150+ Countries",
+      "prayers": "500K Daily Prayers",
+      "rating": "4.9 App Rating",
+      "languages": "Available In 7 Languages",
+      "sermons": "10,000+ Sermons"
+    },
+    "features": {
+      "eyebrow": "Everything You Need",
+      "titlePrefix": "One App,",
+      "titleAccent": "Endless Growth",
+      "body": "We've combined every tool you need for your spiritual journey into one beautifully designed experience. No distractions, just growth."
+    },
+    "core": {
+      "daily": {"title": "Daily Devotionals", "desc": "Fresh content daily with audio readings, scripture, memory verses, and multi-language support."},
+      "streaks": {"title": "Prayer Streaks", "desc": "Set daily goals, track your consistency with visual progress rings, and never break your chain of fire."},
+      "sermons": {"title": "Sermon Library", "desc": "Browse by series or playlist with speed control, waveform visualization, and offline downloads."},
+      "bible": {"title": "Bible Study", "desc": "Multiple Bible versions, verse lookup, integrated scripture readings, and global search across resources."},
+      "prayer": {"title": "Prayer Management", "desc": "Create prayer lists, set timers, enable focus mode with ambient sounds, and protect private prayers with biometrics."},
+      "study": {"title": "Self-Study Hub", "desc": "Your notes, bookmarks, and highlights all in one place, linked to devotionals and sermons."},
+      "notifications": {"title": "Smart Notifications", "desc": "Never miss a devotional or prayer time with customizable push notifications and quiet hours support."},
+      "events": {"title": "Church Events", "desc": "Browse upcoming events, register to attend or volunteer, and get reminders for what matters."},
+      "language": {"title": "Multi-Language", "desc": "Full app experience in English, Italian, Spanish, German, Arabic, Russian, and French. Switch languages anytime."}
+    },
+    "devotionals": {
+      "eyebrow": "Daily Devotionals",
+      "titlePrefix": "Start Each Day",
+      "titleAccent": "With Purpose",
+      "body": "Fresh devotional content delivered daily with beautiful cover images, audio readings, scripture passages, and memory verses to carry with you.",
+      "tools": {
+        "audio": "Audio player for hands-free listening",
+        "languages": "Available in 7 languages",
+        "calendar": "Monthly calendar navigation",
+        "highlight": "Highlight passages with color picker",
+        "quoteCards": "Create shareable quote cards",
+        "bookmark": "Bookmark and take notes"
+      }
+    },
+    "mock": {
+      "devotionalTitle": "Walking in Faith",
+      "readTime": "8 min read",
+      "audio": "Audio",
+      "memoryVerse": "Memory Verse",
+      "sermonTitle": "The Power of Faith"
+    },
+    "prayer": {
+      "eyebrow": "Prayer & Goals",
+      "titlePrefix": "Build Your",
+      "titleAccent": "Prayer Life",
+      "managementTitle": "Prayer Management",
+      "managementBody": "Create and organize prayer lists with powerful tools designed to deepen your prayer practice.",
+      "streaksTitle": "Daily Streaks",
+      "streaksBody": "Set daily devotional goals and track your consistency with beautiful visualizations.",
+      "progress": "Today's Progress",
+      "tools": {
+        "private": "Private prayers with Face ID",
+        "timer": "Prayer timer with countdown",
+        "focus": "Focus mode integration",
+        "sounds": "Ambient background sounds",
+        "community": "Suggested community prayers",
+        "reorder": "Drag to reorder"
+      }
+    },
+    "live": {
+      "eyebrow": "NSPPD Fire Prayers",
+      "titlePrefix": "Join Millions",
+      "titleAccent": "Live Daily",
+      "body": "The National Prayer Session with Pastor Jerry Eze. Join believers worldwide every weekday morning for powerful prayer.",
+      "stats": {
+        "wat": "WAT Daily",
+        "liveValue": "Live",
+        "status": "Status Detection",
+        "replayValue": "Replay",
+        "replay": "Available After",
+        "timezoneValue": "Timezone",
+        "timezone": "Auto-Adjusted"
+      }
+    },
+    "sermons": {
+      "eyebrow": "Sermon Library",
+      "titlePrefix": "Thousands Of",
+      "titleAccent": "Messages",
+      "body": "Browse sermons by series or playlist. Our powerful audio player keeps you engaged with waveform visualization and seamless background playback.",
+      "pausePreview": "Pause sermon preview",
+      "tools": {
+        "player": "Full audio player with seek and skip",
+        "speed": "Variable playback speed",
+        "waveform": "Audio waveform visualization",
+        "download": "Download for offline listening",
+        "share": "Share sermon clips with friends",
+        "notes": "Link notes to specific sermons"
+      }
+    },
+    "study": {
+      "eyebrow": "Self-Study Hub",
+      "titlePrefix": "All Your Study",
+      "titleAccent": "In One Place",
+      "notes": {"title": "Notes", "desc": "Rich text notes linked to devotionals and sermons. Search, filter, and organize your thoughts."},
+      "bookmarks": {"title": "Bookmarks", "desc": "Save your favorite devotionals and sermons for quick access anytime."},
+      "highlights": {"title": "Highlights", "desc": "Color-coded highlighted passages from your readings, all in one searchable view."}
+    },
+    "more": {
+      "eyebrow": "And So Much More",
+      "title": "Built For Your Journey",
+      "events": {"title": "Church Events", "desc": "Register & volunteer"},
+      "giving": {"title": "Giving", "desc": "Subscriptions & one-time"},
+      "declarations": {"title": "Declarations", "desc": "Yearly church declarations"},
+      "notifications": {"title": "Notifications", "desc": "Smart push alerts"},
+      "darkMode": {"title": "Dark Mode", "desc": "Easy on the eyes"},
+      "text": {"title": "Text Settings", "desc": "Adjustable font size"},
+      "timezones": {"title": "Timezones", "desc": "Auto-adjusted times"},
+      "privacy": {"title": "Privacy", "desc": "Biometric protection"}
+    },
+    "stats": {
+      "users": "Active Users",
+      "countries": "Countries",
+      "prayers": "Daily Prayers",
+      "rating": "App Rating"
+    },
+    "gift": {
+      "eyebrow": "Gift a Devotional",
+      "titlePrefix": "Don't Just Grow,",
+      "titleAccent": "Impact.",
+      "body": "Sponsor someone's daily walk with God. Gift them access to the full e-devotional — fresh content every morning, audio readings, scripture, and memory verses.",
+      "cta": "Gift a devotional",
+      "targeted": {
+        "title": "Gift to specific people",
+        "desc": "Send directly to someone's email. They receive a personal claim link and can activate their devotional access straight from the web."
+      },
+      "batch": {
+        "title": "Gift to a group",
+        "desc": "Generate a shareable code link — ideal for churches, outreach programmes, and community events."
+      }
+    },
+    "download": {
+      "eyebrow": "Get Started",
+      "titlePrefix": "Download",
+      "titleAccent": "Free Today",
+      "body": "Start your spiritual journey with Streams of Joy. Available on iOS and Android.",
+      "appStore": "Download on the App Store",
+      "googlePlay": "Get it on Google Play"
+    },
+    "footer": {
+      "body": "Your complete spiritual companion. Daily devotionals, live prayer, sermons, and more.",
+      "features": "Features",
+      "allFeatures": "All Features",
+      "company": "Company",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "accountDeletion": "Account Deletion",
+      "support": "Support",
+      "contact": "Contact"
+    }
+  },
+  "Payment": {
+    "cancelledTitle": "Payment cancelled",
+    "cancelledBody": "Your gift order was not completed. You can start a new gifting session whenever you're ready.",
+    "confirming": "Confirming your payment…",
+    "confirmingBody": "Hang tight — this usually takes just a few seconds.",
+    "checkFailed": "Payment confirmation failed",
+    "codesReady": "Gift codes are ready to share.",
+    "emailsSent": "Gift emails have been sent.",
+    "batchBody": "Share the link below with your recipients. Each person signs in, claims one seat, and receives a unique code to enter in the Streams of Joy app.",
+    "targetedBody": "Your recipients will receive a personal email with their claim link. They sign in, get their unique code, then enter it in the Streams of Joy app to activate their devotional access.",
+    "shareLink": "Share this link with recipients",
+    "copyBatchLink": "Copy gift link",
+    "missingReference": "Missing payment reference from checkout. Please contact support if you were charged.",
+    "verifyFailed": "Unable to confirm payment. Please contact support."
+  },
+  "Legal": {
+    "eyebrow": "Legal",
+    "lastUpdated": "Last updated: February 6, 2025",
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Privacy Policy for the Streams of Joy mobile application and website.",
+      "introTitle": "1. Introduction",
+      "introBody": "Welcome to Streams of Joy. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and website.",
+      "collectTitle": "2. Information We Collect",
+      "personalTitle": "Personal Information You Provide",
+      "personalBody": "We collect personal information that you voluntarily provide when you register for an account, participate in activities, or contact us directly. This may include:",
+      "autoTitle": "Automatically Collected Information",
+      "autoBody": "When you access our Services, we automatically collect device information, usage data, and general location based on IP address.",
+      "useTitle": "3. How We Use Your Information",
+      "sharingTitle": "4. Sharing Your Information",
+      "sharingBody": "We may share information with service providers, for legal obligations, during business transfers, or with your consent. We do not sell your personal information.",
+      "rightsTitle": "5. Your Rights",
+      "rightsBody": "Depending on your location, you may have rights to access, correct, delete, or port your data. To exercise these rights, visit our Streams of Joy Account Deletion page or contact us at privacy@streamsofjoy.com.",
+      "securityTitle": "6. Data Security",
+      "securityBody": "We implement appropriate technical and organizational security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.",
+      "contactTitle": "7. Contact Us",
+      "readTerms": "Read Terms of Service"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Terms of Service for the Streams of Joy mobile application and website.",
+      "agreementTitle": "1. Agreement to Terms",
+      "agreementBody": "By accessing or using the Streams of Joy mobile application and website, you agree to be bound by these Terms of Service. These Terms constitute a legally binding agreement between you and Consonant Technologies Ltd.",
+      "servicesTitle": "2. Description of Services",
+      "servicesBody": "Streams of Joy is a spiritual and prayer community platform providing:",
+      "accountTitle": "3. Account Registration",
+      "accountBody": "To access certain features, you may need to create an account. You agree to provide accurate information and are responsible for safeguarding your account credentials. You must be at least 13 years of age to use the Services.",
+      "useTitle": "4. Acceptable Use",
+      "useBody": "You agree NOT to use the Services to:",
+      "contentTitle": "5. User Content",
+      "contentBody": "You retain ownership of content you submit. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use such content in connection with the Services. When sharing prayer requests or testimonies, please avoid sharing sensitive personal information.",
+      "donationsTitle": "6. Donations",
+      "donationsBody": "Donations are voluntary contributions and are final and non-refundable unless required by law. Payments are processed through secure third-party processors. Recurring donations may be cancelled at any time.",
+      "ipTitle": "7. Intellectual Property",
+      "ipBody": "The Services and their content are owned by Consonant Technologies Ltd. and protected by intellectual property laws. You are granted a limited, non-exclusive license for personal, non-commercial use.",
+      "disclaimersTitle": "8. Disclaimers",
+      "disclaimersBody": "THE SERVICES ARE PROVIDED \"AS IS\" WITHOUT WARRANTIES OF ANY KIND. Spiritual content is for inspirational purposes only and not intended to replace professional advice.",
+      "liabilityTitle": "9. Limitation of Liability",
+      "liabilityBody": "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Services.",
+      "terminationTitle": "10. Termination",
+      "terminationBody": "We reserve the right to suspend or terminate your access at any time. You may terminate your account by contacting us or using the account deletion feature.",
+      "contactTitle": "11. Contact Us",
+      "readPrivacy": "Read Privacy Policy"
+    }
+  },
+  "Deletion": {
+    "eyebrow": "Official account deletion page",
+    "title": "Delete your NSPPD account",
+    "intro": "This page is the official account and personal data deletion request form for the NSPPD mobile app, operated by Consonant Technologies Ltd.",
+    "googlePlay": "If you installed NSPPD from Google Play, use this form to request deletion of your app account and associated personal data.",
+    "formTitle": "Submit deletion request",
+    "formDescription": "Provide the email address linked to your NSPPD account so our team can verify and process the deletion request.",
+    "email": "Email address",
+    "validEmail": "Valid email required",
+    "reason": "Reason",
+    "selectReason": "Select a reason",
+    "reasonRequired": "Select a reason",
+    "reasons": {
+      "noLongerNeeded": "I no longer need the service",
+      "privacyConcern": "Privacy concern",
+      "duplicateAccount": "Duplicate account",
+      "other": "Other"
+    },
+    "message": "Additional details (optional)",
+    "messagePlaceholder": "Anything we should know?",
+    "consent": "I confirm that I am the owner of the NSPPD account associated with this email address and I request deletion of my account and personal data.",
+    "consentRequired": "Consent is required",
+    "submit": "Submit request",
+    "submitting": "Submitting…",
+    "responseTime": "We'll respond within 30 days in line with our policy.",
+    "received": "Request received",
+    "submitted": "Request submitted.",
+    "failed": "Submission failed",
+    "failedShort": "Failed",
+    "failedSubmit": "Failed to submit",
+    "retention": "Requested deletions cover your NSPPD account profile and associated personal data, except records we must retain for legal, security, fraud-prevention, or compliance reasons."
+  },
+  "GiftStart": {
+    "loading": "Preparing your gift…",
+    "unavailable": "Gift checkout unavailable",
+    "continue": "Continue",
+    "optional": "(optional)",
+    "progress": "Checkout progress",
+    "purchasingAs": "Gifting as",
+    "you": "You",
+    "steps": {
+      "plan": "Choose plan",
+      "details": "Gift details",
+      "review": "Review & pay"
+    },
+    "errors": {
+      "start": "Unable to start gift checkout.",
+      "sendCode": "Unable to send verification code.",
+      "verifyCode": "Unable to verify this code.",
+      "calculate": "Unable to calculate price. Check your inputs and try again.",
+      "noRedirect": "Checkout was created, but no redirect URL was returned.",
+      "checkout": "Unable to create checkout."
+    },
+    "anonymous": {
+      "eyebrow": "Gift a Devotional",
+      "title": "Give the Gift of Daily Faith",
+      "body": "Enter your details so we can verify your identity and show you devotional gift plans for your location.",
+      "name": "Your name",
+      "email": "Your email",
+      "phone": "Your phone number",
+      "verificationFailed": "Verification failed",
+      "sending": "Sending code…",
+      "send": "Send verification code",
+      "otp": "Verification code",
+      "sentTo": "We sent a 6-digit code to {email}.",
+      "pricingCountry": "Pricing country: {country}",
+      "codeNotAccepted": "Code not accepted — please try again",
+      "verifying": "Verifying…"
+    },
+    "plan": {
+      "title": "Choose a plan",
+      "body": "Select how long you want to gift devotional access for. Longer plans offer the best value.",
+      "save": "Save {percent}%",
+      "perGift": "/ gift"
+    },
+    "details": {
+      "title": "Who are you blessing?",
+      "body": "Choose how your gift reaches its recipients.",
+      "targetedTitle": "Send to specific people",
+      "targetedBody": "Enter their email addresses. Each person receives a personal claim link straight to their inbox.",
+      "batchTitle": "Create group codes",
+      "batchBody": "Generate a shareable link with multiple codes — ideal for churches, outreach events, and communities.",
+      "recipients": "Recipient email addresses",
+      "recipientHelp": "One per line, or separated by commas.",
+      "recipientCount": "{count, plural, one {# recipient} other {# recipients}}",
+      "quantity": "Number of gift codes",
+      "estimated": "≈ {amount} estimated",
+      "prefix": "Code prefix",
+      "prefixHelp": "All codes will begin with this text.",
+      "note": "Personal gift note",
+      "calculateFailed": "Could not calculate price",
+      "calculating": "Calculating…",
+      "reviewOrder": "Review order"
+    },
+    "review": {
+      "title": "Review your gift",
+      "body": "Everything look right? Confirm your order and proceed to secure payment.",
+      "plan": "Plan",
+      "perGiftAmount": "{amount} per gift",
+      "delivery": "Delivery",
+      "targetedDelivery": "Personal email to each recipient",
+      "batchDelivery": "Shared gift code link",
+      "codeCount": "{count, plural, one {# code} other {# codes}}{prefix}",
+      "prefix": "prefix: {prefix}",
+      "note": "Gift note",
+      "total": "Total",
+      "security": "Payment is handled securely. After payment, each recipient receives a claim link. They sign in, get their unique code, and enter it in the Streams of Joy app to activate their devotional access.",
+      "checkoutFailed": "Checkout failed",
+      "redirecting": "Redirecting to payment…",
+      "pay": "Complete gift purchase"
+    }
+  },
+  "GiftClaim": {
+    "purchaserCredit": "{name} has a gift for you.",
+    "progress": "Claim progress",
+    "loading": "Loading your gift…",
+    "giftAccess": "Gift access",
+    "batchGift": "Batch gift",
+    "yourGift": "Your gift",
+    "subscriptionAccess": "Subscription access",
+    "sharedGift": "Shared gift",
+    "personalGift": "Personal gift",
+    "available": "available",
+    "totalSeats": "total seats",
+    "exhausted": "All seats have been claimed for this batch.",
+    "steps": {
+      "signIn": "Sign in",
+      "claim": "Get code",
+      "openApp": "Open app"
+    },
+    "errors": {
+      "load": "Unable to load this gift.",
+      "initAuth": "Unable to initialize sign-in.",
+      "noCode": "Gift claimed, but no code was returned. Please contact support.",
+      "claim": "Unable to claim this gift.",
+      "invalidCredential": "Email or password is incorrect.",
+      "emailInUse": "An account already exists for this email. Sign in instead.",
+      "popupClosed": "Sign-in was cancelled.",
+      "firebaseDisabled": "Firebase sign-in is not enabled for this project.",
+      "signIn": "Unable to sign in."
+    },
+    "signin": {
+      "title": "Sign in to receive your gift",
+      "targetedBody": "Sign in using the same email address this gift was sent to.",
+      "batchBody": "Sign in or create a free account to claim your seat.",
+      "afterClaim": "Once you claim, you'll receive a code to enter in the Streams of Joy app and unlock your subscription.",
+      "notConfigured": "Sign-in not configured",
+      "firebaseMissing": "Firebase environment variables are missing. Contact support.",
+      "checking": "Checking sign-in status…",
+      "google": "Continue with Google",
+      "apple": "Continue with Apple",
+      "emailDisclaimer": "The email you sign in with will be tied to this gift code. Use the same email in the mobile app to access your subscription.",
+      "failed": "Sign-in failed"
+    },
+    "claim": {
+      "signedInAs": "Signed in as",
+      "defaultUser": "Streams of Joy user",
+      "switchAccount": "Switch account",
+      "title": "Claim your gift",
+      "bodyPrefix": "Tap the button below to generate your unique gift code. Enter that code in the",
+      "appName": "Streams of Joy mobile app",
+      "bodySuffix": "under Account → Redeem gift code to activate your devotional access.",
+      "unavailable": "Claim unavailable",
+      "noSeats": "No seats remaining for this gift",
+      "getCode": "Get my gift code"
+    },
+    "success": {
+      "title": "Your gift is ready!",
+      "bodyPrefix": "Copy your unique code below and enter it in the Streams of Joy app under",
+      "menuPath": "Account → Redeem gift code",
+      "codeLabel": "Your gift code",
+      "copyCode": "Copy gift code",
+      "openApp": "Open Streams of Joy app"
+    }
+  }
+}

@@ -18,6 +18,28 @@ pnpm build
 pnpm start
 ```
 
+## Environment
+
+Gift checkout and claim pages call the backend directly. Set:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=https://your-api-host
+```
+
+Gift claiming uses Firebase Web Auth. Set these from the Firebase web app config:
+
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
+```
+
+Enable Email/Password and Google providers in Firebase Authentication if both sign-in options should be available.
+
 ## Notes
 - Uses **shadcn/ui** components and Tailwind CSS (React version for Next.js).
 - API endpoint: `POST /api/request-deletion` with JSON `{ email, reason, message?, consent }`.

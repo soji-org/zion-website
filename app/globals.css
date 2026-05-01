@@ -1,12 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ========================================
-   BASE STYLES - Editorial/Luxury Theme
-   ======================================== */
 @layer base {
   * {
     @apply border-border;
@@ -14,114 +9,125 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light dark;
   }
 
   body {
-    @apply bg-cream text-charcoal antialiased;
+    background: #FAFAF9; /* stone-50 */
+    color: #1c1917;      /* stone-900 */
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: rgba(207, 92, 54, 0.2);
-    color: #1a1a1a;
+    background: rgba(125, 48, 224, 0.15);
+    color: #1c1917;
   }
 
-  /* Elegant Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #F5F3EF;
+    background: #FAFAF9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1a1a1a;
-    border-radius: 4px;
+    background: #a8a29e; /* stone-400 */
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #CF5C36;
+    background: #1c1917; /* stone-900 */
   }
 }
 
-/* ========================================
-   TYPOGRAPHY
-   ======================================== */
-@layer components {
-  .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-}
-
-/* ========================================
-   ANIMATIONS
-   ======================================== */
 @layer utilities {
   @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   .animate-marquee {
     animation: marquee 35s linear infinite;
   }
-}
 
-/* ========================================
-   SHADCN/UI OVERRIDES
-   ======================================== */
-@layer base {
-  :root {
-    --background: 40 23% 95%;
-    --foreground: 0 0% 10%;
-    --card: 40 23% 95%;
-    --card-foreground: 0 0% 10%;
-    --popover: 40 23% 95%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 16 70% 50%;
-    --primary-foreground: 40 23% 95%;
-    --secondary: 100 15% 75%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 40 15% 90%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 16 70% 50%;
-    --accent-foreground: 40 23% 95%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 40 23% 95%;
-    --border: 0 0% 85%;
-    --input: 0 0% 85%;
-    --ring: 16 70% 50%;
-    --radius: 0.75rem;
+  @keyframes fade-in {
+    0%   { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 }
 
-/* ========================================
-   LEGAL PAGES
-   ======================================== */
+/* ── ShadcN/UI token overrides (stone palette) ─────────────────────── */
+@layer base {
+  :root {
+    --background: 60 9% 98%;        /* stone-50  */
+    --foreground: 20 14% 11%;       /* stone-900 */
+    --card: 60 9% 98%;
+    --card-foreground: 20 14% 11%;
+    --popover: 60 9% 98%;
+    --popover-foreground: 20 14% 11%;
+    --primary: 266 64% 53%;         /* #7D30E0   */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 5% 96%;         /* stone-100 */
+    --secondary-foreground: 20 14% 11%;
+    --muted: 60 5% 96%;
+    --muted-foreground: 25 5% 45%;  /* stone-500 */
+    --accent: 60 5% 94%;            /* stone-200 */
+    --accent-foreground: 20 14% 11%;
+    --destructive: 4 64% 49%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 6% 90%;            /* stone-200 */
+    --input: 20 6% 90%;
+    --ring: 266 64% 53%;
+    --radius: 0rem;                 /* Swiss: rectilinear */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 20 14% 4%;      /* stone-950 */
+      --foreground: 60 9% 98%;      /* stone-50  */
+      --card: 20 14% 4%;
+      --card-foreground: 60 9% 98%;
+      --popover: 20 14% 4%;
+      --popover-foreground: 60 9% 98%;
+      --primary: 266 64% 63%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 20 14% 11%;      /* stone-900 */
+      --secondary-foreground: 60 9% 98%;
+      --muted: 20 14% 11%;
+      --muted-foreground: 25 5% 60%;
+      --accent: 20 14% 15%;         /* stone-800 */
+      --accent-foreground: 60 9% 98%;
+      --destructive: 4 64% 49%;
+      --destructive-foreground: 0 0% 100%;
+      --border: 20 14% 15%;         /* stone-800 */
+      --input: 20 14% 15%;
+      --ring: 266 64% 63%;
+    }
+  }
+}
+
+/* ── Legal pages ───────────────────────────────────────────────────── */
 @layer components {
   .legal-content h1 {
-    @apply text-4xl sm:text-5xl font-display font-bold mb-8 text-charcoal;
+    @apply text-4xl sm:text-5xl font-light tracking-tight mb-8 text-stone-900 text-balance;
   }
 
   .legal-content h2 {
-    @apply text-2xl sm:text-3xl font-display font-bold mt-12 mb-6 text-charcoal;
+    @apply text-2xl sm:text-3xl font-light tracking-tight mt-12 mb-6 text-stone-900;
   }
 
   .legal-content h3 {
-    @apply text-xl font-bold mt-8 mb-4 text-charcoal;
+    @apply text-xl font-normal mt-8 mb-4 text-stone-900;
   }
 
   .legal-content p {
-    @apply text-charcoal/70 leading-relaxed mb-6;
+    @apply text-stone-900/65 leading-relaxed mb-6 max-w-[60ch] text-pretty;
   }
 
   .legal-content ul,
   .legal-content ol {
-    @apply text-charcoal/70 mb-6 pl-6;
+    @apply text-stone-900/65 mb-6 pl-6;
   }
 
   .legal-content li {
@@ -129,19 +135,10 @@
   }
 
   .legal-content a {
-    @apply text-ember hover:text-ember/80 transition-colors underline;
+    @apply text-[#7D30E0] hover:text-[#7D30E0]/70 underline motion-safe:transition motion-reduce:transition-none;
   }
 
   .legal-content strong {
-    @apply text-charcoal font-semibold;
-  }
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-@media (max-width: 640px) {
-  .font-display {
-    letter-spacing: -0.02em;
+    @apply text-stone-900 font-medium;
   }
 }
