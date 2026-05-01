@@ -1,0 +1,23 @@
+name = "zion-website"
+main = ".open-next/worker.js"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "zion-website"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "zion-website-db"
+database_id = "e41ad2ef-1990-4ca7-ba89-a1863f9256fc"
+
+[env.production]
+name = "zion-website"
+
+[env.preview]
+name = "zion-website-preview"

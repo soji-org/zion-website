@@ -25,6 +25,10 @@ function createSchema(t: (key: string) => string) {
 }
 
 type FormValues = z.infer<ReturnType<typeof createSchema>>
+type RequestDeletionResponse = {
+  error?: string
+  message?: string
+}
 
 export function RequestDeletionClient() {
   const t = useTranslations('Deletion')
@@ -56,7 +60,7 @@ export function RequestDeletionClient() {
         body: JSON.stringify(values),
       })
 
-      const json = await res.json()
+      const json = (await res.json()) as RequestDeletionResponse
       if (!res.ok) {
         throw new Error(json?.error || t('failedShort'))
       }

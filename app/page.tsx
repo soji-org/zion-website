@@ -129,6 +129,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ?? ''
 const FALLBACK_STORE_URL = 'https://onelink.to/sojiapp'
 
 type AppLinks = { ios?: string | null; android?: string | null }
+type AppLinksResponse = (AppLinks & { data?: AppLinks | null }) | null
 
 async function fetchAppLinks(): Promise<AppLinks> {
   try {
@@ -136,8 +137,8 @@ async function fetchAppLinks(): Promise<AppLinks> {
       next: { revalidate: 3600 },
     })
     if (!res.ok) return {}
-    const json = await res.json()
-    return (json?.data ?? json) as AppLinks
+    const json = (await res.json()) as AppLinksResponse
+    return json?.data ?? json ?? {}
   } catch {
     return {}
   }
