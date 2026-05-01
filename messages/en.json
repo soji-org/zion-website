@@ -396,14 +396,14 @@
     "signin": {
       "title": "Sign in to receive your gift",
       "targetedBody": "Sign in using the same email address this gift was sent to.",
-      "batchBody": "Sign in or create a free account to claim your seat.",
-      "afterClaim": "Once you claim, you'll receive a code to enter in the Streams of Joy app and unlock your subscription.",
+      "batchBody": "Sign in to claim your seat.",
+      "afterClaim": "Once you claim, you'll receive a code to enter in the NSPPD app and unlock your gift.",
       "notConfigured": "Sign-in not configured",
       "firebaseMissing": "Firebase environment variables are missing. Contact support.",
       "checking": "Checking sign-in status…",
       "google": "Continue with Google",
       "apple": "Continue with Apple",
-      "emailDisclaimer": "The email you sign in with will be tied to this gift code. Use the same email in the mobile app to access your subscription.",
+      "emailDisclaimer": "The email you sign in with will be tied to this gift code. Use the same email in the mobile app to access your gift.",
       "failed": "Sign-in failed"
     },
     "claim": {
@@ -412,19 +412,19 @@
       "switchAccount": "Switch account",
       "title": "Claim your gift",
       "bodyPrefix": "Tap the button below to generate your unique gift code. Enter that code in the",
-      "appName": "Streams of Joy mobile app",
-      "bodySuffix": "under Account → Redeem gift code to activate your devotional access.",
+      "appName": "NSPPD mobile app",
+      "bodySuffix": "under Settings to activate your devotional access.",
       "unavailable": "Claim unavailable",
       "noSeats": "No seats remaining for this gift",
       "getCode": "Get my gift code"
     },
     "success": {
       "title": "Your gift is ready!",
-      "bodyPrefix": "Copy your unique code below and enter it in the Streams of Joy app under",
-      "menuPath": "Account → Redeem gift code",
+      "bodyPrefix": "Copy your unique code below and enter it in the NSPPD app under",
+      "menuPath": "Settings",
       "codeLabel": "Your gift code",
       "copyCode": "Copy gift code",
-      "openApp": "Open Streams of Joy app"
+      "openApp": "Open NSPPD app"
     }
   }
 }

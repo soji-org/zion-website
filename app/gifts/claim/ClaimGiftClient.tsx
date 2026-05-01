@@ -79,7 +79,7 @@ function RedeemModal({ onClose, appLinks }: { onClose: () => void; appLinks: App
   return (
     <dialog
       ref={dialogRef}
-      className="fixed inset-0 m-auto max-h-[90svh] w-full max-w-md overflow-hidden border border-stone-200 bg-white p-0 text-stone-900 shadow-xl backdrop:bg-stone-900/40 open:flex open:flex-col"
+      className="fixed inset-0 m-auto h-[90svh] w-full max-w-md overflow-hidden border border-stone-200 bg-white p-0 text-stone-900 shadow-xl backdrop:bg-stone-900/40 open:flex open:flex-col"
       onClick={(e) => { if (e.target === dialogRef.current) onClose() }}
     >
       {/* Header */}
@@ -192,14 +192,26 @@ type ClaimOutcome = {
   email?: string | null
 }
 
+const DEFAULT_GIFT_DESCRIPTION = 'This thoughtful gift gives you access to the Streams of Joy e-devotional on the NSPPD app.'
+
 function previewTitle(preview: ClaimPreview | BatchPreview | null, fallback: string, batchFallback: string, giftFallback: string) {
   if (!preview) return fallback
   if ('availableSeats' in preview) return preview.planName || preview.plan?.name || batchFallback
   return preview.planName || preview.plan?.name || giftFallback
 }
 
-function previewCycle(preview: ClaimPreview | BatchPreview | null, fallback: string) {
-  return preview?.cycle || preview?.plan?.cycle || fallback
+function previewSenderFirstName(preview: ClaimPreview | BatchPreview | null, mode: ClaimMode) {
+  if (!preview) return null
+  const senderName = preview.purchaserName || (mode === 'targeted' ? (preview as ClaimPreview).gifterName : null)
+  return senderName?.trim().split(/\s+/)[0] || null
+}
+
+function previewDescription(preview: ClaimPreview | BatchPreview | null, mode: ClaimMode) {
+  const note = preview?.note?.trim()
+  if (!note) return DEFAULT_GIFT_DESCRIPTION
+
+  const firstName = previewSenderFirstName(preview, mode)
+  return firstName ? `- Note From ${firstName}: "${note}"` : `"${note}"`
 }
 
 const CLAIM_STEPS = [
@@ -292,6 +304,10 @@ export function ClaimGiftClient({
   const exhausted = useMemo(
     () => preview && 'exhausted' in preview && preview.exhausted,
     [preview],
+  )
+  const giftDescription = useMemo(
+    () => previewDescription(preview, mode),
+    [mode, preview],
   )
 
   async function handleAppleSignIn() {
@@ -447,7 +463,6 @@ export function ClaimGiftClient({
                 {mode === 'batch' ? t('sharedGift') : t('personalGift')}
               </p>
               <h1 className="mt-2 text-2xl font-light tracking-tight">{previewTitle(preview, t('giftAccess'), t('batchGift'), t('yourGift'))}</h1>
-              <p className="mt-1 text-stone-900/55">{previewCycle(preview, t('subscriptionAccess'))}</p>
 
               {preview && 'availableSeats' in preview && (
                 <div className="mt-6 grid grid-cols-2 gap-3">
@@ -462,20 +477,9 @@ export function ClaimGiftClient({
                 </div>
               )}
 
-              {preview?.note && (
-                <blockquote className="mt-6 border-l-2 border-[#7D30E0]/30 pl-4">
-                  <p className="text-sm italic leading-relaxed text-stone-900/60">"{preview.note}"</p>
-                </blockquote>
-              )}
-
-              {(preview as ClaimPreview | BatchPreview)?.scopeDescription && (
-                <div className="mt-6 border border-stone-100 bg-stone-50 px-4 py-3">
-                  <p className="text-xs uppercase tracking-wide text-stone-900/35">Region</p>
-                  <p className="mt-1 text-sm text-stone-900/65">
-                    {(preview as ClaimPreview | BatchPreview).scopeDescription}
-                  </p>
-                </div>
-              )}
+              <blockquote className="mt-6 border-l-2 border-[#7D30E0]/30 pl-4">
+                <p className="text-sm italic leading-relaxed text-stone-900/60">{giftDescription}</p>
+              </blockquote>
 
               {exhausted && (
                 <p className="mt-6 text-sm text-red-600">
