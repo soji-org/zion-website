@@ -1,1 +1,1 @@
-export { default } from '../cancelled/page'
+export { default, metadata } from '../cancelled/page'

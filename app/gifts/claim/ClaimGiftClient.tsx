@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Check, CheckCircle2, Copy, Gift, Loader2, LockKeyhole, Smartphone } from 'lucide-react'
+import { Check, CheckCircle2, Copy, Gift, Loader2, LockKeyhole, Smartphone, X } from 'lucide-react'
 import type { User } from 'firebase/auth'
 import {
   onAuthStateChanged,
@@ -22,7 +22,175 @@ import {
   previewClaim,
 } from '@/lib/gifts/api'
 
+const FALLBACK_STORE_URL = 'https://onelink.to/sojiapp'
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ?? ''
+
+type AppLinks = { ios?: string | null; android?: string | null }
+
+const REDEEM_STEPS = [
+  {
+    n: 1,
+    title: 'Download the Streams of Joy app',
+    body: 'Get the app on your phone — available on both Android and iOS.',
+    image: null,
+  },
+  {
+    n: 2,
+    title: 'Open the app and sign in',
+    body: 'Sign in with Google or Apple. You must use the same Google/Apple email you used while claiming the gift. Anonymous sign-in will not allow you to claim the code.',
+    image: '/gift-step-1.jpg',
+  },
+  {
+    n: 3,
+    title: 'Go to More → Settings',
+    body: 'From the bottom navigation bar, tap the More tab, then tap the Settings icon at the top right.',
+    image: '/gift-step-2.jpg',
+  },
+  {
+    n: 4,
+    title: 'Select "Redeem a Gift"',
+    body: 'On the Settings page, tap "Redeem a Gift".',
+    image: '/gift-step-3.jpg',
+  },
+  {
+    n: 5,
+    title: 'Enter your gift code',
+    body: 'Type or paste your gift code into the field and tap redeem.',
+    image: '/gift-step-4.png',
+  },
+]
+
+function RedeemModal({ onClose, appLinks }: { onClose: () => void; appLinks: AppLinks }) {
+  const [step, setStep] = useState(0)
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const current = REDEEM_STEPS[step]
+  const isFirst = step === 0
+  const isLast = step === REDEEM_STEPS.length - 1
+  const iosUrl = appLinks.ios || FALLBACK_STORE_URL
+  const androidUrl = appLinks.android || FALLBACK_STORE_URL
+
+  useEffect(() => {
+    dialogRef.current?.showModal()
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="fixed inset-0 m-auto max-h-[90svh] w-full max-w-md overflow-hidden border border-stone-200 bg-white p-0 text-stone-900 shadow-xl backdrop:bg-stone-900/40 open:flex open:flex-col"
+      onClick={(e) => { if (e.target === dialogRef.current) onClose() }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-stone-100 px-6 py-4">
+        <p className="text-xs uppercase tracking-wide text-stone-900/40">
+          Step {current.n} of {REDEEM_STEPS.length}
+        </p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="grid h-8 w-8 place-items-center text-stone-900/40 hover:text-stone-900 motion-safe:transition"
+          aria-label="Close"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      </div>
+
+      {/* Progress bar */}
+      <div className="h-0.5 bg-stone-100">
+        <div
+          className="h-full bg-[#7D30E0] motion-safe:transition-all"
+          style={{ width: `${((step + 1) / REDEEM_STEPS.length) * 100}%` }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-y-auto px-6 py-6">
+        <h3 className="text-lg font-medium tracking-tight text-stone-900">{current.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-stone-900/60">{current.body}</p>
+
+        {/* Download buttons (step 1 only) */}
+        {step === 0 && (
+          <div className="mt-6 grid gap-3">
+            <a
+              href={androidUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[44px] items-center justify-center gap-2.5 border border-stone-200 px-4 py-2.5 text-sm hover:border-stone-400 motion-safe:transition"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.18 23.76a2 2 0 0 0 2.07-.22l11.43-6.6-2.56-2.56L3.18 23.76zm15.7-12.72L16.1 9.26 3.08.44A2 2 0 0 0 .5 2.24v19.52a2 2 0 0 0 2.58 1.8l12.82-8.16 3-1.36zM21.44 10.2l-2.7-1.56-2.82 2.82 2.82 2.82 2.72-1.57a2 2 0 0 0 0-3.51zM5.25.46 16.1 7.2l-2.56 2.56L3.18.24A2 2 0 0 1 5.25.46z"/>
+              </svg>
+              Get it on Google Play
+            </a>
+            <a
+              href={iosUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[44px] items-center justify-center gap-2.5 bg-black px-4 py-2.5 text-sm text-white hover:bg-stone-800 motion-safe:transition"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              Download on the App Store
+            </a>
+          </div>
+        )}
+
+        {/* Screenshot */}
+        {current.image && (
+          <div className="mt-6 overflow-hidden border border-stone-100 bg-stone-50">
+            <Image
+              src={current.image}
+              alt={`Step ${current.n} screenshot`}
+              width={400}
+              height={700}
+              className="w-full object-contain"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Footer nav */}
+      <div className="flex items-center justify-between border-t border-stone-100 px-6 py-4">
+        <button
+          type="button"
+          onClick={() => setStep((s) => s - 1)}
+          disabled={isFirst}
+          className="text-sm text-stone-900/50 hover:text-stone-900 disabled:invisible motion-safe:transition"
+        >
+          ← Back
+        </button>
+        {isLast ? (
+          <button
+            type="button"
+            onClick={onClose}
+            className="bg-[#7D30E0] px-5 py-2 text-sm text-white hover:bg-[#7D30E0]/80 motion-safe:transition"
+          >
+            Done
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setStep((s) => s + 1)}
+            className="bg-stone-900 px-5 py-2 text-sm text-white hover:bg-[#7D30E0] motion-safe:transition"
+          >
+            Next →
+          </button>
+        )}
+      </div>
+    </dialog>
+  )
+}
+
 type ClaimMode = 'targeted' | 'batch'
+type ClaimOutcome = {
+  status: string
+  title: string
+  body: string
+  email?: string | null
+}
 
 function previewTitle(preview: ClaimPreview | BatchPreview | null, fallback: string, batchFallback: string, giftFallback: string) {
   if (!preview) return fallback
@@ -56,12 +224,15 @@ export function ClaimGiftClient({
   const [user, setUser] = useState<User | null>(null)
   const [authReady, setAuthReady] = useState(false)
   const [code, setCode] = useState<string | null>(null)
+  const [claimOutcome, setClaimOutcome] = useState<ClaimOutcome | null>(null)
   const [copied, setCopied] = useState(false)
   const [authenticating, setAuthenticating] = useState(false)
   const [claiming, setClaiming] = useState(false)
   const [claimError, setClaimError] = useState<string | null>(null)
   const [authError, setAuthError] = useState<string | null>(null)
   const [previewError, setPreviewError] = useState<string | null>(null)
+  const [appLinks, setAppLinks] = useState<AppLinks>({})
+  const [showRedeemModal, setShowRedeemModal] = useState(false)
 
   useEffect(() => {
     let mounted = true
@@ -102,6 +273,20 @@ export function ClaimGiftClient({
     }
     subscribeToAuth()
     return () => { mounted = false; unsubscribe?.() }
+  }, [])
+
+  useEffect(() => {
+    let mounted = true
+    async function loadAppLinks() {
+      try {
+        const res = await fetch(`${API_BASE}/config/app-links`)
+        if (!res.ok) return
+        const json = await res.json() as AppLinks & { data?: AppLinks | null }
+        if (mounted) setAppLinks(json?.data ?? json ?? {})
+      } catch { /* fall back to default store URL */ }
+    }
+    loadAppLinks()
+    return () => { mounted = false }
   }, [])
 
   const exhausted = useMemo(
@@ -150,9 +335,27 @@ export function ClaimGiftClient({
         mode === 'targeted' ? { claimToken } : { batchOrderId: orderId },
         firebaseToken,
       )
-      const nextCode = response.code || response.giftCode
-      if (!nextCode) throw new Error(t('errors.noCode'))
-      setCode(nextCode)
+      const status = response.status?.toUpperCase()
+      if (status === 'REDEEMED') {
+        setClaimOutcome({
+          status,
+          title: 'Gift already redeemed',
+          body: 'This gift has already been redeemed in the Streams of Joy app. It will not generate another code.',
+          email: response.claimedEmail,
+        })
+        return
+      }
+
+      if (status !== 'CLAIMED') {
+        throw new Error('Unexpected gift status returned. Please try again or contact support.')
+      }
+
+      if (!response.code) {
+        throw new Error(t('errors.noCode'))
+      }
+
+      setCode(response.code)
+      setClaimOutcome(null)
     } catch (err: any) {
       setClaimError(err?.message || t('errors.claim'))
     } finally {
@@ -168,7 +371,7 @@ export function ClaimGiftClient({
   }
 
   // Derive which step is active for the progress indicator
-  const activeStep = code ? 3 : user ? 2 : 1
+  const activeStep = code || claimOutcome ? 3 : user ? 2 : 1
 
   return (
     <main className="min-h-[100svh] bg-stone-50 text-stone-900">
@@ -265,6 +468,15 @@ export function ClaimGiftClient({
                 </blockquote>
               )}
 
+              {(preview as ClaimPreview | BatchPreview)?.scopeDescription && (
+                <div className="mt-6 border border-stone-100 bg-stone-50 px-4 py-3">
+                  <p className="text-xs uppercase tracking-wide text-stone-900/35">Region</p>
+                  <p className="mt-1 text-sm text-stone-900/65">
+                    {(preview as ClaimPreview | BatchPreview).scopeDescription}
+                  </p>
+                </div>
+              )}
+
               {exhausted && (
                 <p className="mt-6 text-sm text-red-600">
                   {t('exhausted')}
@@ -278,7 +490,7 @@ export function ClaimGiftClient({
         <div>
 
           {/* ── Step 1: Sign in ──────────────────────────────────── */}
-          {!code && (
+          {!code && !claimOutcome && (
             <div className="border border-stone-200 bg-white p-6 md:p-8">
               {!user ? (
                 <>
@@ -409,44 +621,74 @@ export function ClaimGiftClient({
           )}
 
           {/* ── Step 3: Code revealed ─────────────────────────────── */}
-          {code && (
+          {(code || claimOutcome) && (
             <div className="border border-stone-200 bg-white p-6 md:p-8">
               <CheckCircle2 className="h-8 w-8 text-[#7D30E0]" aria-hidden="true" />
-              <h2 className="mt-5 text-2xl font-light tracking-tight">{t('success.title')}</h2>
+              <h2 className="mt-5 text-2xl font-light tracking-tight">{claimOutcome?.title || t('success.title')}</h2>
               <p className="mt-2 text-sm leading-relaxed text-stone-900/55">
-                {t('success.bodyPrefix')}{' '}
-                <strong className="font-medium text-stone-900">{t('success.menuPath')}</strong>.
+                {claimOutcome ? (
+                  <>
+                    {claimOutcome.body}
+                    {claimOutcome.email ? (
+                      <span className="mt-2 block text-stone-900/45">
+                        Email: <span className="font-medium text-stone-900">{claimOutcome.email}</span>
+                      </span>
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    {t('success.bodyPrefix')}{' '}
+                    <strong className="font-medium text-stone-900">{t('success.menuPath')}</strong>.
+                  </>
+                )}
               </p>
 
-              <div className="mt-6 border border-stone-200 bg-stone-50 p-4">
-                <p className="text-xs uppercase tracking-wide text-stone-900/35">{t('success.codeLabel')}</p>
-                <div className="mt-3 flex items-center gap-3">
-                  <code className="min-w-0 flex-1 overflow-x-auto font-mono text-lg font-medium tracking-widest tabular-nums text-stone-900">
-                    {code}
-                  </code>
+              {code && (
+                <div className="mt-6 border border-stone-200 bg-stone-50 p-4">
+                  <p className="text-xs uppercase tracking-wide text-stone-900/35">{t('success.codeLabel')}</p>
+                  <div className="mt-3 flex items-center gap-3">
+                    <code className="min-w-0 flex-1 overflow-x-auto font-mono text-lg font-medium tracking-widest tabular-nums text-stone-900">
+                      {code}
+                    </code>
+                    <button
+                      type="button"
+                      onClick={copyCode}
+                      className="shrink-0 grid h-9 w-9 place-items-center border border-stone-200 hover:border-stone-400 motion-safe:transition motion-reduce:transition-none"
+                      aria-label={t('success.copyCode')}
+                    >
+                      {copied
+                        ? <Check className="h-4 w-4 text-[#7D30E0]" aria-hidden="true" />
+                        : <Copy className="h-4 w-4 text-stone-900/50" aria-hidden="true" />
+                      }
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                {/* <a
+                  href="https://onelink.to/sojiapp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center justify-center bg-stone-900 px-6 text-sm text-stone-50 hover:bg-[#7D30E0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 motion-safe:transition motion-reduce:transition-none"
+                >
+                  {t('success.openApp')}
+                </a> */}
+                {code && (
                   <button
                     type="button"
-                    onClick={copyCode}
-                    className="shrink-0 grid h-9 w-9 place-items-center border border-stone-200 hover:border-stone-400 motion-safe:transition motion-reduce:transition-none"
-                    aria-label={t('success.copyCode')}
+                    onClick={() => setShowRedeemModal(true)}
+                    className="inline-flex min-h-[44px] items-center justify-center border border-stone-200 px-6 text-sm text-stone-900 hover:border-stone-400 motion-safe:transition motion-reduce:transition-none"
                   >
-                    {copied
-                      ? <Check className="h-4 w-4 text-[#7D30E0]" aria-hidden="true" />
-                      : <Copy className="h-4 w-4 text-stone-900/50" aria-hidden="true" />
-                    }
+                    How to redeem in the app
                   </button>
-                </div>
+                )}
               </div>
-
-              <a
-                href="https://onelink.to/sojiapp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex min-h-[44px] items-center justify-center bg-stone-900 px-6 text-sm text-stone-50 hover:bg-[#7D30E0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 motion-safe:transition motion-reduce:transition-none"
-              >
-                {t('success.openApp')}
-              </a>
             </div>
+          )}
+
+          {showRedeemModal && (
+            <RedeemModal appLinks={appLinks} onClose={() => setShowRedeemModal(false)} />
           )}
 
           <Link

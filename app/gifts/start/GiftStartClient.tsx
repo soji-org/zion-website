@@ -5,18 +5,21 @@ import type { FormEvent } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { ArrowLeft, ArrowRight, Check, Gift, Loader2, Mail, Phone, ShieldCheck, User, Users } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Gift, Globe2, Info, Loader2, Mail, MapPin, Phone, ShieldCheck, User, Users } from 'lucide-react'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import {
+  BatchPricingRules,
   GiftPlan,
   GiftPurchaseType,
   GiftQuote,
+  GiftRedemptionScope,
   HandoffExchange,
   AnonymousGiftOtpRequest,
+  RedemptionScopeOption,
   createGiftCheckout,
   exchangeHandoff,
   formatMoney,
@@ -43,11 +46,31 @@ function isValidPhone(value: string): boolean {
   return PHONE_E164_RE.test(digits)
 }
 
+const DEFAULT_BATCH_RULES: BatchPricingRules = {
+  minimumSeats: 15,
+  discountThreshold: 50,
+  discountPercentage: 10,
+  eligibilityText: '10% batch discount applies from 50 seats.',
+  minimumSeatsText: 'Batch gifts require at least 15 seats.',
+}
+
 const STEPS: [Step, string][] = [
   [1, 'steps.plan'],
   [2, 'steps.details'],
   [3, 'steps.review'],
 ]
+
+function persistHandoffTokenInUrl(token: string, url?: string) {
+  const nextUrl = new URL(url || window.location.href, window.location.origin)
+  const currentUrl = new URL(window.location.href)
+
+  currentUrl.pathname = nextUrl.pathname || '/gifts/start'
+  currentUrl.search = nextUrl.search
+  currentUrl.searchParams.set('token', token)
+  currentUrl.hash = nextUrl.hash
+
+  window.history.replaceState(null, '', currentUrl.toString())
+}
 
 export function GiftStartClient({ token }: { token?: string }) {
   const common = useTranslations('Common')
@@ -68,31 +91,51 @@ export function GiftStartClient({ token }: { token?: string }) {
   const [plans, setPlans] = useState<GiftPlan[]>([])
   const [selectedPlanId, setSelectedPlanId] = useState('')
   const [purchaseType, setPurchaseType] = useState<GiftPurchaseType>('TARGETED')
+  const [redemptionScope, setRedemptionScope] = useState<GiftRedemptionScope>('LOCAL')
+  const [availableRedemptionScopes, setAvailableRedemptionScopes] = useState<RedemptionScopeOption[]>([])
+  const [batchPricingRules, setBatchPricingRules] = useState<BatchPricingRules>(DEFAULT_BATCH_RULES)
   const [recipientEmails, setRecipientEmails] = useState('')
-  const [quantity, setQuantity] = useState(10)
+  const [quantity, setQuantity] = useState(DEFAULT_BATCH_RULES.minimumSeats)
   const [codePrefix, setCodePrefix] = useState('')
   const [note, setNote] = useState('')
   const [quote, setQuote] = useState<GiftQuote | null>(null)
   const [quoting, setQuoting] = useState(false)
   const [checkingOut, setCheckingOut] = useState(false)
+  const [plansLoading, setPlansLoading] = useState(false)
+  const [pendingCheckoutUrl, setPendingCheckoutUrl] = useState<string | null>(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('giftPendingCheckoutUrl') : null,
+  )
+
+  const applyPlanResponse = useCallback((planResponse: Awaited<ReturnType<typeof loadGiftPlans>>, keepPlanId?: string) => {
+    setPlans(planResponse.plans)
+    const match = keepPlanId ? planResponse.plans.find((p) => p.planId === keepPlanId) : null
+    setSelectedPlanId(match?.planId ?? planResponse.plans[0]?.planId ?? '')
+    if (planResponse.availableRedemptionScopes?.length) {
+      setAvailableRedemptionScopes(planResponse.availableRedemptionScopes)
+    }
+    if (planResponse.batchPricingRules) {
+      setBatchPricingRules(planResponse.batchPricingRules)
+    }
+  }, [])
 
   const startFromToken = useCallback(async (handoffToken: string, isMounted: () => boolean = () => true) => {
     setLoadState('loading')
     setLoadError(null)
     try {
       const exchanged = await exchangeHandoff(handoffToken)
-      const planResponse = await loadGiftPlans(exchanged.handoffSessionId)
+      const initialScope: GiftRedemptionScope = 'LOCAL'
+      const planResponse = await loadGiftPlans(exchanged.handoffSessionId, initialScope)
       if (!isMounted()) return
       setHandoff(exchanged)
-      setPlans(planResponse.plans)
-      setSelectedPlanId(planResponse.plans[0]?.planId ?? '')
+      setRedemptionScope(planResponse.availableRedemptionScopes?.[0]?.scope ?? initialScope)
+      applyPlanResponse(planResponse)
       setLoadState('ready')
     } catch (err: any) {
       if (!isMounted()) return
       setLoadError(err?.message || t('errors.start'))
       setLoadState('error')
     }
-  }, [])
+  }, [applyPlanResponse])
 
   useEffect(() => {
     let mounted = true
@@ -128,7 +171,9 @@ export function GiftStartClient({ token }: { token?: string }) {
         ? t('validation.invalidRecipients', { emails: invalidRecipients.join(', ') })
         : null
     : null
-  const step2Valid = purchaseType === 'TARGETED' ? recipientCount > 0 && invalidRecipients.length === 0 : quantity >= 1
+  const step2Valid = purchaseType === 'TARGETED'
+    ? recipientCount > 0 && invalidRecipients.length === 0
+    : quantity >= batchPricingRules.minimumSeats
 
   async function handleAnonymousOtpRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -161,6 +206,7 @@ export function GiftStartClient({ token }: { token?: string }) {
         handoffSessionId: anonymousOtpRequest.handoffSessionId,
         otp: anonymousOtp.trim(),
       })
+      persistHandoffTokenInUrl(response.token, response.url)
       await startFromToken(response.token)
     } catch (err: any) {
       setAnonymousLoading(false)
@@ -181,6 +227,7 @@ export function GiftStartClient({ token }: { token?: string }) {
         planId: selectedPlan.planId,
         cycleId: selectedPlan.cycleId,
         purchaseType,
+        redemptionScope,
       }
       const payload =
         purchaseType === 'TARGETED'
@@ -207,6 +254,7 @@ export function GiftStartClient({ token }: { token?: string }) {
         planId: selectedPlan.planId,
         cycleId: selectedPlan.cycleId,
         purchaseType,
+        redemptionScope,
         note,
         successUrl: `${origin}/gifts/payment/success`,
         cancelUrl: `${origin}/gifts/payment/cancel`,
@@ -218,6 +266,8 @@ export function GiftStartClient({ token }: { token?: string }) {
       const checkout = await createGiftCheckout(payload)
       const redirectUrl = checkout.checkout.data?.redirectUrl || checkout.order.checkoutUrl
       if (!redirectUrl) throw new Error(t('errors.noRedirect'))
+      localStorage.setItem('giftPendingCheckoutUrl', redirectUrl)
+      setPendingCheckoutUrl(redirectUrl)
       window.location.href = redirectUrl
     } catch (err: any) {
       setStepError(err?.message || t('errors.checkout'))
@@ -375,11 +425,6 @@ export function GiftStartClient({ token }: { token?: string }) {
                   maxLength={8}
                   required
                 />
-                {anonymousOtpRequest?.purchaserCountry && (
-                  <p className="text-xs uppercase tracking-wide text-stone-900/35">
-                    {t('anonymous.pricingCountry', { country: anonymousOtpRequest.purchaserCountry })}
-                  </p>
-                )}
               </div>
 
               {anonymousError && (
@@ -421,15 +466,51 @@ export function GiftStartClient({ token }: { token?: string }) {
   }
 
   if (loadState === 'error') {
+    const isSessionUsed = loadError?.toLowerCase().includes('already been used')
     return (
       <main className="grid min-h-[100svh] place-items-center bg-stone-50 px-4">
         <div className="w-full max-w-md border border-stone-200 p-8">
           <Gift className="h-7 w-7 text-[#7D30E0]/60" />
-          <h1 className="mt-6 text-2xl font-light text-stone-900">{t('unavailable')}</h1>
-          <p className="mt-3 leading-relaxed text-stone-900/60">{loadError}</p>
-          <Link href="/" className="mt-8 inline-block text-sm text-[#7D30E0] hover:underline">
-            ← {common('backToStreams')}
-          </Link>
+          <h1 className="mt-6 text-2xl font-light text-stone-900">
+            {isSessionUsed ? 'Checkout already started' : t('unavailable')}
+          </h1>
+          <p className="mt-3 leading-relaxed text-stone-900/60">
+            {isSessionUsed
+              ? 'Your payment session is already in progress. Return to complete it, or start a new gift order.'
+              : loadError}
+          </p>
+          {isSessionUsed ? (
+            <div className="mt-8 flex flex-col gap-3">
+              {pendingCheckoutUrl && (
+                <a
+                  href={pendingCheckoutUrl}
+                  className="inline-flex min-h-[44px] items-center justify-center bg-[#7D30E0] px-6 text-sm text-stone-50 hover:bg-[#7D30E0]/80 motion-safe:transition"
+                >
+                  Return to payment
+                </a>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.removeItem('giftPendingCheckoutUrl')
+                  setPendingCheckoutUrl(null)
+                  const url = new URL(window.location.href)
+                  url.searchParams.delete('token')
+                  window.location.replace(url.toString())
+                }}
+                className="inline-flex min-h-[44px] items-center justify-center border border-stone-200 px-6 text-sm hover:border-stone-400 motion-safe:transition"
+              >
+                Start over
+              </button>
+              <Link href="/" className="text-sm text-stone-900/40 hover:text-stone-900/60 motion-safe:transition">
+                ← {common('backToStreams')}
+              </Link>
+            </div>
+          ) : (
+            <Link href="/" className="mt-8 inline-block text-sm text-[#7D30E0] hover:underline">
+              ← {common('backToStreams')}
+            </Link>
+          )}
         </div>
       </main>
     )
@@ -509,7 +590,66 @@ export function GiftStartClient({ token }: { token?: string }) {
             </h1>
             <p className="mt-2 text-stone-900/50">{t('plan.body')}</p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {/* Redemption scope */}
+            {availableRedemptionScopes.length >= 2 && (
+              <fieldset className="mt-8" disabled={plansLoading}>
+                <legend className="text-xs uppercase tracking-widest text-stone-900/40">Gift scope</legend>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {availableRedemptionScopes.map((option) => {
+                    const active = redemptionScope === option.scope
+                    const countryCode = option.allowedCountries[0] ?? handoff?.purchaserCountry ?? ''
+                    const countryLabel = countryCode
+                      ? (() => { try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(countryCode) ?? countryCode } catch { return countryCode } })()
+                      : ''
+                    const description = option.scope === 'LOCAL'
+                      ? `Since you're in ${countryLabel}, gifts in this scope are only redeemable by recipients in ${countryLabel}.`
+                      : 'These gifts are redeemable by anyone, in any country around the world.'
+                    return (
+                      <button
+                        key={option.scope}
+                        type="button"
+                        onClick={async () => {
+                          if (option.scope === redemptionScope || !handoff) return
+                          setRedemptionScope(option.scope)
+                          setQuote(null)
+                          setPlansLoading(true)
+                          try {
+                            const planResponse = await loadGiftPlans(handoff.handoffSessionId, option.scope)
+                            applyPlanResponse(planResponse, selectedPlanId)
+                          } finally {
+                            setPlansLoading(false)
+                          }
+                        }}
+                        aria-pressed={active}
+                        className={`flex gap-3 border bg-white p-4 text-left motion-safe:transition disabled:opacity-60 ${
+                          active ? 'border-[#7D30E0]/50 bg-[#7D30E0]/[0.03]' : 'border-stone-200 hover:border-stone-300'
+                        }`}
+                      >
+                        <span
+                          className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 motion-safe:transition ${
+                            active ? 'border-[#7D30E0]' : 'border-stone-300'
+                          }`}
+                          aria-hidden="true"
+                        >
+                          {active && <span className="h-1.5 w-1.5 rounded-full bg-[#7D30E0]" />}
+                        </span>
+                        <div>
+                          <p className="flex items-center gap-1.5 text-sm font-medium text-stone-900">
+                            {option.scope === 'LOCAL'
+                              ? <><MapPin className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />Local</>
+                              : <><Globe2 className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />Global</>
+                            }
+                          </p>
+                          <p className="mt-1 text-xs leading-relaxed text-stone-900/50">{description}</p>
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </fieldset>
+            )}
+
+            <div className={`${availableRedemptionScopes.length >= 2 ? 'mt-4' : 'mt-8'} grid gap-3 sm:grid-cols-2`}>
               {plans.map((plan) => {
                 const selected = selectedPlan?.planId === plan.planId
                 return (
@@ -517,8 +657,9 @@ export function GiftStartClient({ token }: { token?: string }) {
                     key={`${plan.planId}-${plan.cycleId}`}
                     type="button"
                     onClick={() => setSelectedPlanId(plan.planId)}
+                    disabled={plansLoading}
                     aria-pressed={selected}
-                    className={`relative border p-6 text-left motion-safe:transition ${
+                    className={`relative border p-6 text-left motion-safe:transition disabled:opacity-60 ${
                       selected
                         ? 'border-[#7D30E0] bg-[#7D30E0]/5'
                         : 'border-stone-200 bg-white hover:border-stone-400'
@@ -554,11 +695,13 @@ export function GiftStartClient({ token }: { token?: string }) {
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                disabled={!selectedPlan}
+                disabled={!selectedPlan || plansLoading}
                 className="inline-flex items-center gap-2 bg-stone-900 px-6 py-3 text-sm text-stone-50 hover:bg-[#7D30E0] disabled:opacity-40 motion-safe:transition motion-reduce:transition-none"
               >
-                {t('continue')}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                {plansLoading
+                  ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />{t('loading')}</>
+                  : <>{t('continue')}<ArrowRight className="h-4 w-4" aria-hidden="true" /></>
+                }
               </button>
             </div>
           </section>
@@ -618,76 +761,109 @@ export function GiftStartClient({ token }: { token?: string }) {
             <div className="mt-4 border border-stone-200 bg-white p-6">
               {purchaseType === 'TARGETED' ? (
                 <div className="grid gap-2">
-                  <Label htmlFor="recipients" className="text-sm text-stone-900/65">
-                    {t('details.recipients')}
-                  </Label>
-                  <p className="text-xs text-stone-900/35">{t('details.recipientHelp')}</p>
+                  <div className="flex items-center gap-1.5">
+                    <Label htmlFor="recipients" className="text-sm text-stone-900/65">
+                      {t('details.recipients')}
+                    </Label>
+                    <span title="One email per line, or comma-separated. Each recipient gets their own code emailed directly to them." className="cursor-default">
+                      <Info className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />
+                    </span>
+                  </div>
                   <Textarea
                     id="recipients"
                     value={recipientEmails}
                     onChange={(e) => { setRecipientEmails(e.target.value); setQuote(null) }}
                     rows={4}
-                    placeholder={'friend@example.com\nanother@example.com'}
-                    className="mt-1"
+                    placeholder="jane@example.com, john@example.com"
                   />
-                  {recipientCount > 0 && (
-                    <p className="text-sm text-stone-900/50">
-                      {t('details.recipientCount', { count: recipientCount })}
-                      {' · '}
-                      <span className="tabular-nums">
-                        ≈ {formatMoney(selectedPlan!.unitAmount * recipientCount, selectedPlan!.currency)}
-                      </span>
-                    </p>
-                  )}
                 </div>
               ) : (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-2">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  <div className="flex items-center gap-1.5">
                     <Label htmlFor="quantity" className="text-sm text-stone-900/65">
                       {t('details.quantity')}
                     </Label>
-                    <Input
-                      id="quantity"
-                      type="number"
-                      min={1}
-                      value={quantity}
-                      onChange={(e) => { setQuantity(Math.max(1, Number(e.target.value) || 1)); setQuote(null) }}
-                    />
-                    <p className="text-xs tabular-nums text-stone-900/35">
-                      {t('details.estimated', { amount: formatMoney(selectedPlan!.unitAmount * quantity, selectedPlan!.currency) })}
-                    </p>
+                    <span title={`How many codes to generate. Minimum ${batchPricingRules.minimumSeats}. Each code unlocks one gift subscription and can be shared however you like.`} className="cursor-default">
+                      <Info className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />
+                    </span>
                   </div>
-                  <div className="grid gap-2">
+                  <div className="flex items-center gap-1.5">
                     <Label htmlFor="prefix" className="text-sm text-stone-900/65">
                       {t('details.prefix')}{' '}
                       <span className="text-stone-900/30">{t('optional')}</span>
                     </Label>
-                    <Input
-                      id="prefix"
-                      value={codePrefix}
-                      onChange={(e) => setCodePrefix(e.target.value.toUpperCase())}
-                      placeholder="OUTREACH"
-                    />
-                    <p className="text-xs text-stone-900/35">{t('details.prefixHelp')}</p>
+                    <span title="A word prepended to every code in this batch — e.g. CHURCH-ABC123. Useful for tracking which campaign a code came from." className="cursor-default">
+                      <Info className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />
+                    </span>
                   </div>
+                  <Input
+                    id="quantity"
+                    type="number"
+                    min={batchPricingRules.minimumSeats}
+                    value={quantity}
+                    onChange={(e) => { setQuantity(Math.max(1, Number(e.target.value) || 1)); setQuote(null) }}
+                    placeholder={String(batchPricingRules.minimumSeats)}
+                  />
+                  <Input
+                    id="prefix"
+                    value={codePrefix}
+                    onChange={(e) => setCodePrefix(e.target.value.toUpperCase())}
+                    placeholder="Customize gift codes..."
+                  />
+                  {quantity < batchPricingRules.minimumSeats && (
+                    <p className="col-span-2 text-xs text-red-600">{batchPricingRules.minimumSeatsText}</p>
+                  )}
                 </div>
               )}
 
               <div className="mt-5 border-t border-stone-100 pt-5">
-                <Label htmlFor="note" className="text-sm text-stone-900/65">
-                  {t('details.note')}{' '}
-                  <span className="text-stone-900/30">{t('optional')}</span>
-                </Label>
+                <div className="flex items-center gap-1.5">
+                  <Label htmlFor="note" className="text-sm text-stone-900/65">
+                    {t('details.note')}{' '}
+                    <span className="text-stone-900/30">{t('optional')}</span>
+                  </Label>
+                  <span title="Shown in the gift email and on the claim page. Keep it short — a sentence or two." className="cursor-default">
+                    <Info className="h-3.5 w-3.5 text-stone-400" aria-hidden="true" />
+                  </span>
+                </div>
                 <Textarea
                   id="note"
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   rows={2}
-                  placeholder="Enjoy this gift of daily devotion…"
+                  placeholder="A short message for your recipients…"
                   className="mt-2"
                 />
               </div>
             </div>
+
+            {/* Live estimate */}
+            {selectedPlan && (purchaseType === 'TARGETED' ? recipientCount > 0 : quantity >= batchPricingRules.minimumSeats) && (
+              <div className="mt-4 flex items-baseline justify-between border border-stone-200 bg-white px-5 py-4">
+                <p className="text-sm text-stone-900/50">
+                  {purchaseType === 'TARGETED'
+                    ? t('details.recipientCount', { count: recipientCount })
+                    : `${quantity} codes`}
+                  {' × '}
+                  {formatMoney(selectedPlan.unitAmount, selectedPlan.currency)}
+                  {purchaseType === 'BATCH' && quantity >= batchPricingRules.discountThreshold && (
+                    <span className="ml-2 text-[#7D30E0]">· {batchPricingRules.discountPercentage}% off</span>
+                  )}
+                </p>
+                <p className="text-xl font-light tabular-nums">
+                  {purchaseType === 'BATCH' && quantity >= batchPricingRules.discountThreshold
+                    ? formatMoney(
+                        selectedPlan.unitAmount * quantity * (1 - batchPricingRules.discountPercentage / 100),
+                        selectedPlan.currency,
+                      )
+                    : formatMoney(
+                        selectedPlan.unitAmount * (purchaseType === 'TARGETED' ? recipientCount : quantity),
+                        selectedPlan.currency,
+                      )
+                  }
+                </p>
+              </div>
+            )}
 
             {stepError && (
               <Alert variant="destructive" className="mt-4">
@@ -747,18 +923,44 @@ export function GiftStartClient({ token }: { token?: string }) {
                     : t('review.codeCount', { count: quantity, prefix: codePrefix ? ` · ${t('review.prefix', { prefix: codePrefix })}` : '' })}
                 </p>
               </Row>
+              <Row label="Region">
+                <p className="font-normal">
+                  {quote.scopeDescription ?? (redemptionScope === 'GLOBAL' ? 'Global gift, redeemable anywhere' : 'Local gift')}
+                </p>
+                {quote.allowedCountries && quote.allowedCountries.length > 0 && (
+                  <p className="text-sm text-stone-900/50">Redeemable in {quote.allowedCountries.join(', ')}</p>
+                )}
+              </Row>
               {note && (
                 <Row label={t('review.note')}>
                   <p className="text-sm italic text-stone-900/65">"{note}"</p>
                 </Row>
               )}
+              {quote.discountPercentage > 0 && quote.subtotalAmount != null && (
+                <>
+                  <Row label="Subtotal">
+                    <p className="tabular-nums">{formatMoney(quote.subtotalAmount, quote.currency)}</p>
+                    <p className="text-sm text-stone-900/40 tabular-nums">
+                      {quote.quantity} × {formatMoney(quote.unitAmount, quote.currency)}
+                    </p>
+                  </Row>
+                  <Row label="Discount">
+                    <p className="tabular-nums text-emerald-700">
+                      −{formatMoney(quote.discountAmount, quote.currency)}{' '}
+                      <span className="text-sm">({quote.discountPercentage}% batch discount)</span>
+                    </p>
+                  </Row>
+                </>
+              )}
               <Row label={t('review.total')}>
                 <p className="text-3xl font-light tabular-nums">
                   {formatMoney(quote.totalAmount, quote.currency)}
                 </p>
-                <p className="text-sm text-stone-900/40 tabular-nums">
-                  {quote.quantity} × {formatMoney(quote.unitAmount, quote.currency)}
-                </p>
+                {!quote.discountPercentage && (
+                  <p className="text-sm text-stone-900/40 tabular-nums">
+                    {quote.quantity} × {formatMoney(quote.unitAmount, quote.currency)}
+                  </p>
+                )}
               </Row>
             </div>
 

@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { FirebaseAnalytics } from '@/components/firebase-analytics'
 import { rtlLocales, resolveLocale } from '@/lib/i18n'
+import { siteConfig } from '@/lib/seo'
 import './globals.css'
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -15,20 +16,39 @@ const ibmPlexSans = IBM_Plex_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Streams of Joy - The Altar of Fire',
-  description: 'Your digital altar for the miraculous. Join millions in the 7AM Fire Prayers, track your spiritual streaks, and carry the atmosphere of miracles in your pocket.',
-  keywords: 'Streams of Joy, Pastor Jerry Eze, NSPPD, Fire Prayers, Prayer App, Devotional',
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.legalName }],
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Streams of Joy - The Altar of Fire',
-    description: 'Your digital altar for the miraculous. Join millions in the 7AM Fire Prayers.',
-    images: ['/og-image.png'],
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: '/',
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        alt: siteConfig.name,
+      },
+    ],
     type: 'website',
+    locale: 'en',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Streams of Joy - The Altar of Fire',
-    description: 'Your digital altar for the miraculous. Join millions in the 7AM Fire Prayers.',
-    images: ['/twitter-image.png'],
+    card: 'summary',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   icons: {
     icon: [
@@ -37,7 +57,8 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.svg',
     apple: '/streams-of-joy-logo.svg',
-  }
+  },
+  category: 'Lifestyle',
 }
 
 export default async function RootLayout({

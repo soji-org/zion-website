@@ -1,8 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { XCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { createNoIndexMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createNoIndexMetadata(
+  'Gift Payment Cancelled',
+  'Your Streams of Joy gift payment was cancelled. Return to the app or start a new gift checkout session.',
+  '/gifts/payment/cancelled',
+)
 
 export default function GiftPaymentCancelledPage() {
   const common = useTranslations('Common')

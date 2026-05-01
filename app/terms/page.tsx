@@ -2,11 +2,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Terms of Service - Streams of Joy',
-  description: 'Terms of Service for the Streams of Joy mobile application and website.',
-}
+export const metadata: Metadata = createPageMetadata({
+  title: 'Terms of Service',
+  description:
+    'Read the Streams of Joy terms of service for app accounts, prayer content, sermons, giving, subscriptions, and website use.',
+  path: '/terms',
+  keywords: ['Streams of Joy terms', 'NSPPD app terms', 'Consonant Technologies terms'],
+})
 
 export default function TermsPage() {
   const common = useTranslations('Common')

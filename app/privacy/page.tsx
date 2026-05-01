@@ -2,11 +2,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy - Streams of Joy',
-  description: 'Privacy Policy for the Streams of Joy mobile application and website.',
-}
+export const metadata: Metadata = createPageMetadata({
+  title: 'Privacy Policy',
+  description:
+    'Read the Streams of Joy privacy policy for the mobile app and website, including how account, contact, payment, prayer, and usage data are handled.',
+  path: '/privacy',
+  keywords: ['Streams of Joy privacy policy', 'NSPPD app privacy', 'Consonant Technologies privacy'],
+})
 
 export default function PrivacyPage() {
   const common = useTranslations('Common')

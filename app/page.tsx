@@ -1,7 +1,9 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { createPageMetadata } from '@/lib/seo'
 import {
   Bell,
   BookMarked,
@@ -31,6 +33,14 @@ import {
   Users,
   Volume2,
 } from 'lucide-react'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Daily Devotionals, NSPPD Prayer & Sermons',
+  description:
+    'Download Streams of Joy for daily devotionals, NSPPD live prayer, sermon listening, Bible study, prayer lists, notes, bookmarks, highlights, events, and giving.',
+  path: '/',
+  keywords: ['Streams of Joy app', 'NSPPD live prayer', 'daily devotionals', 'Pastor Jerry Eze sermons'],
+})
 
 const coreFeatures = [
   {
@@ -203,14 +213,6 @@ export default async function HomePage() {
 
           <div className="flex items-center gap-2">
             <LanguageSwitcher className="max-w-[7.5rem] sm:max-w-none" />
-            <a
-              href={iosUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center justify-center bg-stone-900 px-5 text-sm text-stone-50 hover:bg-[#7D30E0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 motion-safe:transition motion-reduce:transition-none"
-            >
-              {common('downloadFree')}
-            </a>
           </div>
         </div>
       </header>

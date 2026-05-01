@@ -2,6 +2,21 @@
 
 export type GiftProvider = 'STRIPE' | 'PAYSTACK'
 export type GiftPurchaseType = 'TARGETED' | 'BATCH'
+export type GiftRedemptionScope = 'LOCAL' | 'GLOBAL'
+
+export type RedemptionScopeOption = {
+  scope: GiftRedemptionScope
+  label: string
+  allowedCountries: string[]
+}
+
+export type BatchPricingRules = {
+  minimumSeats: number
+  discountThreshold: number
+  discountPercentage: number
+  eligibilityText: string
+  minimumSeatsText: string
+}
 
 export type HandoffExchange = {
   handoffSessionId: string
@@ -46,6 +61,8 @@ export type GiftPlansResponse = {
   subscriptionTypeId: string
   subscriptionTypeName: string
   plans: GiftPlan[]
+  availableRedemptionScopes?: RedemptionScopeOption[]
+  batchPricingRules?: BatchPricingRules
 }
 
 export type GiftQuote = {
@@ -54,7 +71,15 @@ export type GiftQuote = {
   currency: string
   quantity: number
   unitAmount: number
+  subtotalAmount: number
+  discountPercentage: number
+  discountAmount: number
   totalAmount: number
+  discountEligible: boolean
+  nextDiscountSeatCount?: number | null
+  redemptionScope?: GiftRedemptionScope
+  allowedCountries?: string[]
+  scopeDescription?: string | null
 }
 
 export type GiftOrder = {
@@ -86,6 +111,9 @@ export type ClaimPreview = {
   note?: string | null
   expiresAt?: string | null
   status?: string | null
+  redemptionScope?: GiftRedemptionScope | null
+  allowedCountries?: string[]
+  scopeDescription?: string | null
 }
 
 export type BatchPreview = {
@@ -98,13 +126,23 @@ export type BatchPreview = {
   availableSeats: number
   exhausted: boolean
   note?: string | null
+  redemptionScope?: GiftRedemptionScope | null
+  allowedCountries?: string[]
+  scopeDescription?: string | null
 }
 
 export type ClaimResult = {
-  code?: string
-  giftCode?: string
-  giftItem?: unknown
-  item?: unknown
+  itemId?: string
+  orderId?: string
+  status: 'CLAIMED' | 'REDEEMED'
+  purchaserName?: string | null
+  planName?: string | null
+  cycle?: string | null
+  note?: string | null
+  claimedEmail?: string | null
+  code: string | null
+  codeExpiresAt?: string | null
+  redeemedAt?: string | null
 }
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ?? ''
@@ -127,7 +165,7 @@ async function giftRequest<T>(path: string, init?: RequestInit & { token?: strin
   const payload = (await response.json().catch(() => ({}))) as ApiEnvelope<T> | { error?: string; message?: string }
 
   if (!response.ok) {
-    throw new Error(payload.error || payload.message || 'Request failed')
+    throw new Error(payload.message || payload.error || 'Request failed')
   }
 
   if ('data' in payload) {
@@ -158,8 +196,10 @@ export function verifyAnonymousGiftOtp(payload: { handoffSessionId: string; otp:
   })
 }
 
-export function loadGiftPlans(handoffSessionId: string) {
-  return giftRequest<GiftPlansResponse>(`/subscription/gifts/plans?handoffSessionId=${encodeURIComponent(handoffSessionId)}`)
+export function loadGiftPlans(handoffSessionId: string, redemptionScope?: GiftRedemptionScope) {
+  const params = new URLSearchParams({ handoffSessionId })
+  if (redemptionScope) params.set('redemptionScope', redemptionScope)
+  return giftRequest<GiftPlansResponse>(`/subscription/gifts/plans?${params}`)
 }
 
 export function quoteGift(payload: {
@@ -167,6 +207,7 @@ export function quoteGift(payload: {
   planId: string
   cycleId: string
   purchaseType: GiftPurchaseType
+  redemptionScope: GiftRedemptionScope
   recipientEmails?: string[]
   quantity?: number
 }) {
@@ -181,6 +222,7 @@ export function createGiftCheckout(payload: {
   planId: string
   cycleId: string
   purchaseType: GiftPurchaseType
+  redemptionScope: GiftRedemptionScope
   recipientEmails?: string[]
   quantity?: number
   codePrefix?: string
