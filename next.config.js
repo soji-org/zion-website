@@ -5,6 +5,16 @@ initOpenNextCloudflareForDev()
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts')
 
-const config = {}
+const config = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+  },
+}
 
 export default withNextIntl(config)
