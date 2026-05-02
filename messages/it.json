@@ -26,10 +26,22 @@
       "live": "NSPPD in diretta ogni giorno alle 7:00 WAT"
     },
     "quick": {
-      "daily": {"title": "Devozionali quotidiani", "desc": "Con audio e traduzioni"},
-      "streaks": {"title": "Serie di preghiere", "desc": "Monitora la tua costanza"},
-      "sermons": {"title": "Libreria di sermoni", "desc": "Ascolto offline"},
-      "bible": {"title": "Studio biblico", "desc": "Versioni multiple"}
+      "daily": {
+        "title": "Devozionali quotidiani",
+        "desc": "Con audio e traduzioni"
+      },
+      "streaks": {
+        "title": "Serie di preghiere",
+        "desc": "Monitora la tua costanza"
+      },
+      "sermons": {
+        "title": "Libreria di sermoni",
+        "desc": "Ascolto offline"
+      },
+      "bible": {
+        "title": "Studio biblico",
+        "desc": "Versioni multiple"
+      }
     },
     "ticker": {
       "users": "2M+ Utenti",
@@ -46,15 +58,42 @@
       "body": "Abbiamo combinato ogni strumento di cui hai bisogno per il tuo percorso spirituale in un'esperienza splendidamente progettata. Niente distrazioni, solo crescita."
     },
     "core": {
-      "daily": {"title": "Devozionali quotidiani", "desc": "Contenuti freschi ogni giorno con letture audio, scrittura, versetti da memorizzare e supporto multilingue."},
-      "streaks": {"title": "Serie di preghiere", "desc": "Imposta obiettivi giornalieri, monitora la tua costanza con anelli di progresso visivi e non interrompere mai la tua catena di fuoco."},
-      "sermons": {"title": "Libreria di sermoni", "desc": "Sfoglia per serie o playlist con controllo della velocità, visualizzazione della forma d'onda e download offline."},
-      "bible": {"title": "Studio biblico", "desc": "Versioni multiple della Bibbia, ricerca di versetti, letture delle scritture integrate e ricerca globale tra le risorse."},
-      "prayer": {"title": "Gestione della preghiera", "desc": "Crea liste di preghiera, imposta timer, attiva la modalità focus con suoni ambientali e proteggi le preghiere private con la biometria."},
-      "study": {"title": "Hub di autoapprendimento", "desc": "Le tue note, segnalibri ed evidenziazioni tutte in un posto, collegate ai devozionali e ai sermoni."},
-      "notifications": {"title": "Notifiche intelligenti", "desc": "Non perdere mai un devozionale o un momento di preghiera con notifiche push personalizzabili e supporto per ore silenziose."},
-      "events": {"title": "Eventi della chiesa", "desc": "Sfoglia gli eventi imminenti, registrati per partecipare o fare volontariato e ricevi promemoria per ciò che conta."},
-      "language": {"title": "Multilingue", "desc": "Esperienza completa dell'app in inglese, italiano, spagnolo, tedesco, arabo, russo e francese. Cambia lingua in qualsiasi momento."}
+      "daily": {
+        "title": "Devozionali quotidiani",
+        "desc": "Contenuti freschi ogni giorno con letture audio, scrittura, versetti da memorizzare e supporto multilingue."
+      },
+      "streaks": {
+        "title": "Serie di preghiere",
+        "desc": "Imposta obiettivi giornalieri, monitora la tua costanza con anelli di progresso visivi e non interrompere mai la tua catena di fuoco."
+      },
+      "sermons": {
+        "title": "Libreria di sermoni",
+        "desc": "Sfoglia per serie o playlist con controllo della velocità, visualizzazione della forma d'onda e download offline."
+      },
+      "bible": {
+        "title": "Studio biblico",
+        "desc": "Versioni multiple della Bibbia, ricerca di versetti, letture delle scritture integrate e ricerca globale tra le risorse."
+      },
+      "prayer": {
+        "title": "Gestione della preghiera",
+        "desc": "Crea liste di preghiera, imposta timer, attiva la modalità focus con suoni ambientali e proteggi le preghiere private con la biometria."
+      },
+      "study": {
+        "title": "Hub di autoapprendimento",
+        "desc": "Le tue note, segnalibri ed evidenziazioni tutte in un posto, collegate ai devozionali e ai sermoni."
+      },
+      "notifications": {
+        "title": "Notifiche intelligenti",
+        "desc": "Non perdere mai un devozionale o un momento di preghiera con notifiche push personalizzabili e supporto per ore silenziose."
+      },
+      "events": {
+        "title": "Eventi della chiesa",
+        "desc": "Sfoglia gli eventi imminenti, registrati per partecipare o fare volontariato e ricevi promemoria per ciò che conta."
+      },
+      "language": {
+        "title": "Multilingue",
+        "desc": "Esperienza completa dell'app in inglese, italiano, spagnolo, tedesco, arabo, russo e francese. Cambia lingua in qualsiasi momento."
+      }
     },
     "devotionals": {
       "eyebrow": "Devozionali quotidiani",
@@ -129,21 +168,54 @@
       "eyebrow": "Hub di autoapprendimento",
       "titlePrefix": "Tutto il tuo studio",
       "titleAccent": "In un posto",
-      "notes": {"title": "Note", "desc": "Note di testo ricco collegate a devozionali e sermoni. Cerca, filtra e organizza i tuoi pensieri."},
-      "bookmarks": {"title": "Segnalibri", "desc": "Salva i tuoi devozionali e sermoni preferiti per un accesso rapido in qualsiasi momento."},
-      "highlights": {"title": "Evidenziazioni", "desc": "Passi evidenziati con codici colore dalle tue letture, tutti in una vista ricercabile."}
+      "notes": {
+        "title": "Note",
+        "desc": "Note di testo ricco collegate a devozionali e sermoni. Cerca, filtra e organizza i tuoi pensieri."
+      },
+      "bookmarks": {
+        "title": "Segnalibri",
+        "desc": "Salva i tuoi devozionali e sermoni preferiti per un accesso rapido in qualsiasi momento."
+      },
+      "highlights": {
+        "title": "Evidenziazioni",
+        "desc": "Passi evidenziati con codici colore dalle tue letture, tutti in una vista ricercabile."
+      }
     },
     "more": {
       "eyebrow": "E molto altro ancora",
       "title": "Costruito per il tuo percorso",
-      "events": {"title": "Eventi della chiesa", "desc": "Registrati e fai volontariato"},
-      "giving": {"title": "Donazioni", "desc": "Abbonamenti e una tantum"},
-      "declarations": {"title": "Dichiarazioni", "desc": "Dichiarazioni annuali della chiesa"},
-      "notifications": {"title": "Notifiche", "desc": "Avvisi push intelligenti"},
-      "darkMode": {"title": "Modalità scura", "desc": "Delicato per gli occhi"},
-      "text": {"title": "Impostazioni testo", "desc": "Dimensione carattere regolabile"},
-      "timezones": {"title": "Fusi orari", "desc": "Orari adattati automaticamente"},
-      "privacy": {"title": "Privacy", "desc": "Protezione biometrica"}
+      "events": {
+        "title": "Eventi della chiesa",
+        "desc": "Registrati e fai volontariato"
+      },
+      "giving": {
+        "title": "Donazioni",
+        "desc": "Abbonamenti e una tantum"
+      },
+      "declarations": {
+        "title": "Dichiarazioni",
+        "desc": "Dichiarazioni annuali della chiesa"
+      },
+      "notifications": {
+        "title": "Notifiche",
+        "desc": "Avvisi push intelligenti"
+      },
+      "darkMode": {
+        "title": "Modalità scura",
+        "desc": "Delicato per gli occhi"
+      },
+      "text": {
+        "title": "Impostazioni testo",
+        "desc": "Dimensione carattere regolabile"
+      },
+      "timezones": {
+        "title": "Fusi orari",
+        "desc": "Orari adattati automaticamente"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "desc": "Protezione biometrica"
+      }
     },
     "stats": {
       "users": "Utenti attivi",
@@ -410,5 +482,19 @@
       "copyCode": "Copia codice regalo",
       "openApp": "Apri l'app Streams of Joy"
     }
+  },
+  "Devotional": {
+    "badge": "Devozione quotidiana",
+    "readMin": "{n} min di lettura",
+    "by": "Pastore Jerry Eze",
+    "memoryVerseLabel": "Versetto da memorizzare",
+    "ctaPrefix": "Per leggere",
+    "ctaSuffix": ", altre devozioni, ascoltare devozioni audio, ricevere promemoria di preghiera e seguire il ministero del Pastore Jerry Eze & NSPPD —",
+    "featureDevotionals": "Devozioni quotidiane",
+    "featureAudio": "Devozioni audio",
+    "featurePrayer": "Promemoria di preghiera",
+    "featureOffline": "Accesso offline",
+    "downloadBtn": "Scarica l'app",
+    "downloadNote": "Gratis su iOS e Android"
   }
 }

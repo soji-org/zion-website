@@ -26,10 +26,22 @@
       "live": "NSPPD en direct chaque jour à 7h WAT"
     },
     "quick": {
-      "daily": {"title": "Méditations quotidiennes", "desc": "Avec audio et traductions"},
-      "streaks": {"title": "Séries de prières", "desc": "Suivez votre régularité"},
-      "sermons": {"title": "Bibliothèque de sermons", "desc": "Écoute hors ligne"},
-      "bible": {"title": "Étude biblique", "desc": "Plusieurs versions"}
+      "daily": {
+        "title": "Méditations quotidiennes",
+        "desc": "Avec audio et traductions"
+      },
+      "streaks": {
+        "title": "Séries de prières",
+        "desc": "Suivez votre régularité"
+      },
+      "sermons": {
+        "title": "Bibliothèque de sermons",
+        "desc": "Écoute hors ligne"
+      },
+      "bible": {
+        "title": "Étude biblique",
+        "desc": "Plusieurs versions"
+      }
     },
     "ticker": {
       "users": "2M+ utilisateurs",
@@ -46,15 +58,42 @@
       "body": "Nous avons réuni tous les outils dont vous avez besoin pour votre parcours spirituel dans une expérience magnifiquement conçue. Pas de distractions, seulement de la croissance."
     },
     "core": {
-      "daily": {"title": "Méditations quotidiennes", "desc": "Du contenu frais chaque jour avec des lectures audio, des écritures, des versets à mémoriser et un support multilingue."},
-      "streaks": {"title": "Séries de prières", "desc": "Fixez des objectifs quotidiens, suivez votre régularité avec des anneaux de progression visuels et ne brisez jamais votre chaîne de feu."},
-      "sermons": {"title": "Bibliothèque de sermons", "desc": "Parcourez par série ou liste de lecture avec contrôle de vitesse, visualisation de forme d'onde et téléchargements hors ligne."},
-      "bible": {"title": "Étude biblique", "desc": "Plusieurs versions de la Bible, recherche de versets, lectures des Écritures intégrées et recherche globale sur toutes les ressources."},
-      "prayer": {"title": "Gestion des prières", "desc": "Créez des listes de prières, définissez des minuteries, activez le mode de concentration avec des sons ambiants et protégez les prières privées avec la biométrie."},
-      "study": {"title": "Centre d'autoformation", "desc": "Vos notes, signets et surbrillances en un seul endroit, liés aux méditations et aux sermons."},
-      "notifications": {"title": "Notifications intelligentes", "desc": "Ne manquez jamais une méditation ou un temps de prière avec des notifications push personnalisables et le support des heures silencieuses."},
-      "events": {"title": "Événements de l'église", "desc": "Parcourez les événements à venir, inscrivez-vous pour participer ou faire du bénévolat et recevez des rappels pour ce qui compte."},
-      "language": {"title": "Multilingue", "desc": "Expérience complète de l'app en anglais, italien, espagnol, allemand, arabe, russe et français. Changez de langue à tout moment."}
+      "daily": {
+        "title": "Méditations quotidiennes",
+        "desc": "Du contenu frais chaque jour avec des lectures audio, des écritures, des versets à mémoriser et un support multilingue."
+      },
+      "streaks": {
+        "title": "Séries de prières",
+        "desc": "Fixez des objectifs quotidiens, suivez votre régularité avec des anneaux de progression visuels et ne brisez jamais votre chaîne de feu."
+      },
+      "sermons": {
+        "title": "Bibliothèque de sermons",
+        "desc": "Parcourez par série ou liste de lecture avec contrôle de vitesse, visualisation de forme d'onde et téléchargements hors ligne."
+      },
+      "bible": {
+        "title": "Étude biblique",
+        "desc": "Plusieurs versions de la Bible, recherche de versets, lectures des Écritures intégrées et recherche globale sur toutes les ressources."
+      },
+      "prayer": {
+        "title": "Gestion des prières",
+        "desc": "Créez des listes de prières, définissez des minuteries, activez le mode de concentration avec des sons ambiants et protégez les prières privées avec la biométrie."
+      },
+      "study": {
+        "title": "Centre d'autoformation",
+        "desc": "Vos notes, signets et surbrillances en un seul endroit, liés aux méditations et aux sermons."
+      },
+      "notifications": {
+        "title": "Notifications intelligentes",
+        "desc": "Ne manquez jamais une méditation ou un temps de prière avec des notifications push personnalisables et le support des heures silencieuses."
+      },
+      "events": {
+        "title": "Événements de l'église",
+        "desc": "Parcourez les événements à venir, inscrivez-vous pour participer ou faire du bénévolat et recevez des rappels pour ce qui compte."
+      },
+      "language": {
+        "title": "Multilingue",
+        "desc": "Expérience complète de l'app en anglais, italien, espagnol, allemand, arabe, russe et français. Changez de langue à tout moment."
+      }
     },
     "devotionals": {
       "eyebrow": "Méditations quotidiennes",
@@ -129,21 +168,54 @@
       "eyebrow": "Centre d'autoformation",
       "titlePrefix": "Toute votre étude",
       "titleAccent": "En un seul endroit",
-      "notes": {"title": "Notes", "desc": "Notes de texte enrichi liées aux méditations et aux sermons. Recherchez, filtrez et organisez vos pensées."},
-      "bookmarks": {"title": "Signets", "desc": "Enregistrez vos méditations et sermons favoris pour un accès rapide à tout moment."},
-      "highlights": {"title": "Surlignages", "desc": "Passages surlignés par code couleur de vos lectures, tous dans une vue consultable."}
+      "notes": {
+        "title": "Notes",
+        "desc": "Notes de texte enrichi liées aux méditations et aux sermons. Recherchez, filtrez et organisez vos pensées."
+      },
+      "bookmarks": {
+        "title": "Signets",
+        "desc": "Enregistrez vos méditations et sermons favoris pour un accès rapide à tout moment."
+      },
+      "highlights": {
+        "title": "Surlignages",
+        "desc": "Passages surlignés par code couleur de vos lectures, tous dans une vue consultable."
+      }
     },
     "more": {
       "eyebrow": "Et bien plus encore",
       "title": "Conçu pour votre parcours",
-      "events": {"title": "Événements de l'église", "desc": "Inscrivez-vous et faites du bénévolat"},
-      "giving": {"title": "Dons", "desc": "Abonnements et ponctuels"},
-      "declarations": {"title": "Déclarations", "desc": "Déclarations annuelles de l'église"},
-      "notifications": {"title": "Notifications", "desc": "Alertes push intelligentes"},
-      "darkMode": {"title": "Mode sombre", "desc": "Doux pour les yeux"},
-      "text": {"title": "Paramètres de texte", "desc": "Taille de police réglable"},
-      "timezones": {"title": "Fuseaux horaires", "desc": "Horaires ajustés automatiquement"},
-      "privacy": {"title": "Confidentialité", "desc": "Protection biométrique"}
+      "events": {
+        "title": "Événements de l'église",
+        "desc": "Inscrivez-vous et faites du bénévolat"
+      },
+      "giving": {
+        "title": "Dons",
+        "desc": "Abonnements et ponctuels"
+      },
+      "declarations": {
+        "title": "Déclarations",
+        "desc": "Déclarations annuelles de l'église"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "desc": "Alertes push intelligentes"
+      },
+      "darkMode": {
+        "title": "Mode sombre",
+        "desc": "Doux pour les yeux"
+      },
+      "text": {
+        "title": "Paramètres de texte",
+        "desc": "Taille de police réglable"
+      },
+      "timezones": {
+        "title": "Fuseaux horaires",
+        "desc": "Horaires ajustés automatiquement"
+      },
+      "privacy": {
+        "title": "Confidentialité",
+        "desc": "Protection biométrique"
+      }
     },
     "stats": {
       "users": "Utilisateurs actifs",
@@ -410,5 +482,19 @@
       "copyCode": "Copier le code cadeau",
       "openApp": "Ouvrir l'app Streams of Joy"
     }
+  },
+  "Devotional": {
+    "badge": "Méditation du jour",
+    "readMin": "{n} min de lecture",
+    "by": "Pasteur Jerry Eze",
+    "memoryVerseLabel": "Verset à mémoriser",
+    "ctaPrefix": "Pour lire",
+    "ctaSuffix": ", d'autres méditations, écouter les dévotions audio, recevoir des rappels de prière et suivre le ministère du Pasteur Jerry Eze & NSPPD —",
+    "featureDevotionals": "Méditations quotidiennes",
+    "featureAudio": "Dévotions audio",
+    "featurePrayer": "Rappels de prière",
+    "featureOffline": "Accès hors ligne",
+    "downloadBtn": "Télécharger l'application",
+    "downloadNote": "Gratuit sur iOS et Android"
   }
 }

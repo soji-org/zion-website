@@ -26,10 +26,22 @@
       "live": "NSPPD täglich live um 7:00 WAT"
     },
     "quick": {
-      "daily": {"title": "Tägliche Andachten", "desc": "Mit Audio & Übersetzungen"},
-      "streaks": {"title": "Gebetsserien", "desc": "Beständigkeit verfolgen"},
-      "sermons": {"title": "Predigtbibliothek", "desc": "Offline hören"},
-      "bible": {"title": "Bibelstudium", "desc": "Mehrere Versionen"}
+      "daily": {
+        "title": "Tägliche Andachten",
+        "desc": "Mit Audio & Übersetzungen"
+      },
+      "streaks": {
+        "title": "Gebetsserien",
+        "desc": "Beständigkeit verfolgen"
+      },
+      "sermons": {
+        "title": "Predigtbibliothek",
+        "desc": "Offline hören"
+      },
+      "bible": {
+        "title": "Bibelstudium",
+        "desc": "Mehrere Versionen"
+      }
     },
     "ticker": {
       "users": "2M+ Nutzer",
@@ -46,15 +58,42 @@
       "body": "Wir haben alle Werkzeuge, die du für deine geistliche Reise brauchst, in ein wunderschön gestaltetes Erlebnis zusammengefasst. Keine Ablenkungen, nur Wachstum."
     },
     "core": {
-      "daily": {"title": "Tägliche Andachten", "desc": "Täglich frische Inhalte mit Audio-Lesungen, Schrifttext, Merkverser und mehrsprachiger Unterstützung."},
-      "streaks": {"title": "Gebetsserien", "desc": "Setze tägliche Ziele, verfolge deine Beständigkeit mit visuellen Fortschrittsringen und unterbriche niemals deine Feuerkette."},
-      "sermons": {"title": "Predigtbibliothek", "desc": "Durchsuche nach Serien oder Playlists mit Geschwindigkeitssteuerung, Wellenformvisualisierung und Offline-Downloads."},
-      "bible": {"title": "Bibelstudium", "desc": "Mehrere Bibelversionen, Verssuche, integrierte Schriftlesungen und globale Suche über alle Ressourcen."},
-      "prayer": {"title": "Gebetsverwaltung", "desc": "Erstelle Gebetslisten, setze Timer, aktiviere den Fokusmodus mit Umgebungsklängen und schütze private Gebete mit Biometrie."},
-      "study": {"title": "Selbststudium-Hub", "desc": "Deine Notizen, Lesezeichen und Markierungen alle an einem Ort, verknüpft mit Andachten und Predigten."},
-      "notifications": {"title": "Smarte Benachrichtigungen", "desc": "Verpasse nie eine Andacht oder Gebetszeit mit anpassbaren Push-Benachrichtigungen und Unterstützung für stille Stunden."},
-      "events": {"title": "Kirchenveranstaltungen", "desc": "Durchsuche kommende Veranstaltungen, melde dich zur Teilnahme oder als Freiwilliger an und erhalte Erinnerungen für wichtige Dinge."},
-      "language": {"title": "Mehrsprachig", "desc": "Vollständige App-Erfahrung auf Englisch, Italienisch, Spanisch, Deutsch, Arabisch, Russisch und Französisch. Sprache jederzeit wechseln."}
+      "daily": {
+        "title": "Tägliche Andachten",
+        "desc": "Täglich frische Inhalte mit Audio-Lesungen, Schrifttext, Merkverser und mehrsprachiger Unterstützung."
+      },
+      "streaks": {
+        "title": "Gebetsserien",
+        "desc": "Setze tägliche Ziele, verfolge deine Beständigkeit mit visuellen Fortschrittsringen und unterbriche niemals deine Feuerkette."
+      },
+      "sermons": {
+        "title": "Predigtbibliothek",
+        "desc": "Durchsuche nach Serien oder Playlists mit Geschwindigkeitssteuerung, Wellenformvisualisierung und Offline-Downloads."
+      },
+      "bible": {
+        "title": "Bibelstudium",
+        "desc": "Mehrere Bibelversionen, Verssuche, integrierte Schriftlesungen und globale Suche über alle Ressourcen."
+      },
+      "prayer": {
+        "title": "Gebetsverwaltung",
+        "desc": "Erstelle Gebetslisten, setze Timer, aktiviere den Fokusmodus mit Umgebungsklängen und schütze private Gebete mit Biometrie."
+      },
+      "study": {
+        "title": "Selbststudium-Hub",
+        "desc": "Deine Notizen, Lesezeichen und Markierungen alle an einem Ort, verknüpft mit Andachten und Predigten."
+      },
+      "notifications": {
+        "title": "Smarte Benachrichtigungen",
+        "desc": "Verpasse nie eine Andacht oder Gebetszeit mit anpassbaren Push-Benachrichtigungen und Unterstützung für stille Stunden."
+      },
+      "events": {
+        "title": "Kirchenveranstaltungen",
+        "desc": "Durchsuche kommende Veranstaltungen, melde dich zur Teilnahme oder als Freiwilliger an und erhalte Erinnerungen für wichtige Dinge."
+      },
+      "language": {
+        "title": "Mehrsprachig",
+        "desc": "Vollständige App-Erfahrung auf Englisch, Italienisch, Spanisch, Deutsch, Arabisch, Russisch und Französisch. Sprache jederzeit wechseln."
+      }
     },
     "devotionals": {
       "eyebrow": "Tägliche Andachten",
@@ -129,21 +168,54 @@
       "eyebrow": "Selbststudium-Hub",
       "titlePrefix": "All dein Studium",
       "titleAccent": "An einem Ort",
-      "notes": {"title": "Notizen", "desc": "Rich-Text-Notizen verknüpft mit Andachten und Predigten. Suche, filtere und organisiere deine Gedanken."},
-      "bookmarks": {"title": "Lesezeichen", "desc": "Speichere deine Lieblings-Andachten und -Predigten für schnellen Zugriff jederzeit."},
-      "highlights": {"title": "Markierungen", "desc": "Farblich markierte Passagen aus deinen Lesungen, alle in einer durchsuchbaren Ansicht."}
+      "notes": {
+        "title": "Notizen",
+        "desc": "Rich-Text-Notizen verknüpft mit Andachten und Predigten. Suche, filtere und organisiere deine Gedanken."
+      },
+      "bookmarks": {
+        "title": "Lesezeichen",
+        "desc": "Speichere deine Lieblings-Andachten und -Predigten für schnellen Zugriff jederzeit."
+      },
+      "highlights": {
+        "title": "Markierungen",
+        "desc": "Farblich markierte Passagen aus deinen Lesungen, alle in einer durchsuchbaren Ansicht."
+      }
     },
     "more": {
       "eyebrow": "Und so vieles mehr",
       "title": "Für deine Reise gebaut",
-      "events": {"title": "Kirchenveranstaltungen", "desc": "Anmelden & ehrenamtlich tätig sein"},
-      "giving": {"title": "Spenden", "desc": "Abonnements & einmalig"},
-      "declarations": {"title": "Erklärungen", "desc": "Jährliche Kirchenerklärungen"},
-      "notifications": {"title": "Benachrichtigungen", "desc": "Smarte Push-Benachrichtigungen"},
-      "darkMode": {"title": "Dunkelmodus", "desc": "Augenschonend"},
-      "text": {"title": "Texteinstellungen", "desc": "Anpassbare Schriftgröße"},
-      "timezones": {"title": "Zeitzonen", "desc": "Automatisch angepasste Zeiten"},
-      "privacy": {"title": "Datenschutz", "desc": "Biometrischer Schutz"}
+      "events": {
+        "title": "Kirchenveranstaltungen",
+        "desc": "Anmelden & ehrenamtlich tätig sein"
+      },
+      "giving": {
+        "title": "Spenden",
+        "desc": "Abonnements & einmalig"
+      },
+      "declarations": {
+        "title": "Erklärungen",
+        "desc": "Jährliche Kirchenerklärungen"
+      },
+      "notifications": {
+        "title": "Benachrichtigungen",
+        "desc": "Smarte Push-Benachrichtigungen"
+      },
+      "darkMode": {
+        "title": "Dunkelmodus",
+        "desc": "Augenschonend"
+      },
+      "text": {
+        "title": "Texteinstellungen",
+        "desc": "Anpassbare Schriftgröße"
+      },
+      "timezones": {
+        "title": "Zeitzonen",
+        "desc": "Automatisch angepasste Zeiten"
+      },
+      "privacy": {
+        "title": "Datenschutz",
+        "desc": "Biometrischer Schutz"
+      }
     },
     "stats": {
       "users": "Aktive Nutzer",
@@ -410,5 +482,19 @@
       "copyCode": "Geschenkcode kopieren",
       "openApp": "Streams of Joy App öffnen"
     }
+  },
+  "Devotional": {
+    "badge": "Tägliche Andacht",
+    "readMin": "{n} Min. Lesezeit",
+    "by": "Pastor Jerry Eze",
+    "memoryVerseLabel": "Merkvers",
+    "ctaPrefix": "Um",
+    "ctaSuffix": " zu lesen, weitere Andachten zu entdecken, Audio-Andachten zu hören, Gebetserinnerungen zu erhalten und dem Dienst von Pastor Jerry Eze & NSPPD zu folgen —",
+    "featureDevotionals": "Tägliche Andachten",
+    "featureAudio": "Audio-Andachten",
+    "featurePrayer": "Gebetserinnerungen",
+    "featureOffline": "Offline-Zugang",
+    "downloadBtn": "App herunterladen",
+    "downloadNote": "Kostenlos für iOS und Android"
   }
 }

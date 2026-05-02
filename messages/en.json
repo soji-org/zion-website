@@ -27,10 +27,22 @@
       "live": "NSPPD Live Daily at 7AM WAT"
     },
     "quick": {
-      "daily": {"title": "Daily Devotionals", "desc": "With audio & translations"},
-      "streaks": {"title": "Prayer Streaks", "desc": "Track your consistency"},
-      "sermons": {"title": "Sermon Library", "desc": "Offline listening"},
-      "bible": {"title": "Bible Study", "desc": "Multiple versions"}
+      "daily": {
+        "title": "Daily Devotionals",
+        "desc": "With audio & translations"
+      },
+      "streaks": {
+        "title": "Prayer Streaks",
+        "desc": "Track your consistency"
+      },
+      "sermons": {
+        "title": "Sermon Library",
+        "desc": "Offline listening"
+      },
+      "bible": {
+        "title": "Bible Study",
+        "desc": "Multiple versions"
+      }
     },
     "ticker": {
       "users": "2M+ Users",
@@ -47,15 +59,42 @@
       "body": "We've combined every tool you need for your spiritual journey into one beautifully designed experience. No distractions, just growth."
     },
     "core": {
-      "daily": {"title": "Daily Devotionals", "desc": "Fresh content daily with audio readings, scripture, memory verses, and multi-language support."},
-      "streaks": {"title": "Prayer Streaks", "desc": "Set daily goals, track your consistency with visual progress rings, and never break your chain of fire."},
-      "sermons": {"title": "Sermon Library", "desc": "Browse by series or playlist with speed control, waveform visualization, and offline downloads."},
-      "bible": {"title": "Bible Study", "desc": "Multiple Bible versions, verse lookup, integrated scripture readings, and global search across resources."},
-      "prayer": {"title": "Prayer Management", "desc": "Create prayer lists, set timers, enable focus mode with ambient sounds, and protect private prayers with biometrics."},
-      "study": {"title": "Self-Study Hub", "desc": "Your notes, bookmarks, and highlights all in one place, linked to devotionals and sermons."},
-      "notifications": {"title": "Smart Notifications", "desc": "Never miss a devotional or prayer time with customizable push notifications and quiet hours support."},
-      "events": {"title": "Church Events", "desc": "Browse upcoming events, register to attend or volunteer, and get reminders for what matters."},
-      "language": {"title": "Multi-Language", "desc": "Full app experience in English, Italian, Spanish, German, Arabic, Russian, and French. Switch languages anytime."}
+      "daily": {
+        "title": "Daily Devotionals",
+        "desc": "Fresh content daily with audio readings, scripture, memory verses, and multi-language support."
+      },
+      "streaks": {
+        "title": "Prayer Streaks",
+        "desc": "Set daily goals, track your consistency with visual progress rings, and never break your chain of fire."
+      },
+      "sermons": {
+        "title": "Sermon Library",
+        "desc": "Browse by series or playlist with speed control, waveform visualization, and offline downloads."
+      },
+      "bible": {
+        "title": "Bible Study",
+        "desc": "Multiple Bible versions, verse lookup, integrated scripture readings, and global search across resources."
+      },
+      "prayer": {
+        "title": "Prayer Management",
+        "desc": "Create prayer lists, set timers, enable focus mode with ambient sounds, and protect private prayers with biometrics."
+      },
+      "study": {
+        "title": "Self-Study Hub",
+        "desc": "Your notes, bookmarks, and highlights all in one place, linked to devotionals and sermons."
+      },
+      "notifications": {
+        "title": "Smart Notifications",
+        "desc": "Never miss a devotional or prayer time with customizable push notifications and quiet hours support."
+      },
+      "events": {
+        "title": "Church Events",
+        "desc": "Browse upcoming events, register to attend or volunteer, and get reminders for what matters."
+      },
+      "language": {
+        "title": "Multi-Language",
+        "desc": "Full app experience in English, Italian, Spanish, German, Arabic, Russian, and French. Switch languages anytime."
+      }
     },
     "devotionals": {
       "eyebrow": "Daily Devotionals",
@@ -130,21 +169,54 @@
       "eyebrow": "Self-Study Hub",
       "titlePrefix": "All Your Study",
       "titleAccent": "In One Place",
-      "notes": {"title": "Notes", "desc": "Rich text notes linked to devotionals and sermons. Search, filter, and organize your thoughts."},
-      "bookmarks": {"title": "Bookmarks", "desc": "Save your favorite devotionals and sermons for quick access anytime."},
-      "highlights": {"title": "Highlights", "desc": "Color-coded highlighted passages from your readings, all in one searchable view."}
+      "notes": {
+        "title": "Notes",
+        "desc": "Rich text notes linked to devotionals and sermons. Search, filter, and organize your thoughts."
+      },
+      "bookmarks": {
+        "title": "Bookmarks",
+        "desc": "Save your favorite devotionals and sermons for quick access anytime."
+      },
+      "highlights": {
+        "title": "Highlights",
+        "desc": "Color-coded highlighted passages from your readings, all in one searchable view."
+      }
     },
     "more": {
       "eyebrow": "And So Much More",
       "title": "Built For Your Journey",
-      "events": {"title": "Church Events", "desc": "Register & volunteer"},
-      "giving": {"title": "Giving", "desc": "Subscriptions & one-time"},
-      "declarations": {"title": "Declarations", "desc": "Yearly church declarations"},
-      "notifications": {"title": "Notifications", "desc": "Smart push alerts"},
-      "darkMode": {"title": "Dark Mode", "desc": "Easy on the eyes"},
-      "text": {"title": "Text Settings", "desc": "Adjustable font size"},
-      "timezones": {"title": "Timezones", "desc": "Auto-adjusted times"},
-      "privacy": {"title": "Privacy", "desc": "Biometric protection"}
+      "events": {
+        "title": "Church Events",
+        "desc": "Register & volunteer"
+      },
+      "giving": {
+        "title": "Giving",
+        "desc": "Subscriptions & one-time"
+      },
+      "declarations": {
+        "title": "Declarations",
+        "desc": "Yearly church declarations"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "desc": "Smart push alerts"
+      },
+      "darkMode": {
+        "title": "Dark Mode",
+        "desc": "Easy on the eyes"
+      },
+      "text": {
+        "title": "Text Settings",
+        "desc": "Adjustable font size"
+      },
+      "timezones": {
+        "title": "Timezones",
+        "desc": "Auto-adjusted times"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "desc": "Biometric protection"
+      }
     },
     "stats": {
       "users": "Active Users",
@@ -426,5 +498,19 @@
       "copyCode": "Copy gift code",
       "openApp": "Open NSPPD app"
     }
+  },
+  "Devotional": {
+    "badge": "Daily Devotional",
+    "readMin": "{n} min read",
+    "by": "Pastor Jerry Eze",
+    "memoryVerseLabel": "Memory Verse",
+    "ctaPrefix": "To read",
+    "ctaSuffix": ", other devotionals, listen to audio devotionals, get prayer reminders, and follow the ministry of Pastor Jerry Eze & NSPPD —",
+    "featureDevotionals": "Daily Devotionals",
+    "featureAudio": "Audio Devotionals",
+    "featurePrayer": "Prayer Reminders",
+    "featureOffline": "Offline Access",
+    "downloadBtn": "Download the App",
+    "downloadNote": "Free on iOS & Android"
   }
 }
