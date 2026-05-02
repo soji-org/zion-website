@@ -47,11 +47,11 @@ function isValidPhone(value: string): boolean {
 }
 
 const DEFAULT_BATCH_RULES: BatchPricingRules = {
-  minimumSeats: 15,
-  discountThreshold: 50,
+  minimumSeats: 5,
+  discountThreshold: 25,
   discountPercentage: 10,
-  eligibilityText: '10% batch discount applies from 50 seats.',
-  minimumSeatsText: 'Batch gifts require at least 15 seats.',
+  eligibilityText: '10% batch discount applies from 25 seats.',
+  minimumSeatsText: 'Batch gifts require at least 5 seats.',
 }
 
 const STEPS: [Step, string][] = [
@@ -778,7 +778,7 @@ export function GiftStartClient({ token }: { token?: string }) {
                   />
                 </div>
               ) : (
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                <div className="grid gap-x-4 gap-y-2 sm:grid-cols-2">
                   <div className="flex items-center gap-1.5">
                     <Label htmlFor="quantity" className="text-sm text-stone-900/65">
                       {t('details.quantity')}
@@ -798,10 +798,11 @@ export function GiftStartClient({ token }: { token?: string }) {
                   </div>
                   <Input
                     id="quantity"
-                    type="number"
-                    min={batchPricingRules.minimumSeats}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={quantity}
-                    onChange={(e) => { setQuantity(Math.max(1, Number(e.target.value) || 1)); setQuote(null) }}
+                    onChange={(e) => { const n = parseInt(e.target.value.replace(/\D/g, ''), 10); setQuantity(n > 0 ? n : 1); setQuote(null) }}
                     placeholder={String(batchPricingRules.minimumSeats)}
                   />
                   <Input

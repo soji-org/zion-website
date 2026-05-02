@@ -346,7 +346,7 @@ export function ClaimGiftClient({
     setClaimError(null)
     setClaiming(true)
     try {
-      const firebaseToken = await user.getIdToken()
+      const firebaseToken = await user.getIdToken(true)
       const response = await claimGift(
         mode === 'targeted' ? { claimToken } : { batchOrderId: orderId },
         firebaseToken,
